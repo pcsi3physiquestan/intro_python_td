@@ -52,12 +52,10 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="canonical" href="https://pcsi3physiquestan.github.io/intro_python_td_source/notebook/complement.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="1. S’entraîner" href="exo_science_2.html" />
+    <link rel="prev" title="2. S’entraîner (Import et tirages aléatoires)" href="exo_science_2.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -132,8 +130,13 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
+  <a class="reference internal" href="exo_polyfit.html">
+   1. S’entraîner (régression linéaire)
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="exo_science_2.html">
-   1. S’entraîner
+   2. S’entraîner (Import et tirages aléatoires)
   </a>
  </li>
 </ul>
@@ -146,11 +149,6 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    1. Comprendre ses erreurs
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="#la-fonction-numpy-polyfit">
-   2. La fonction numpy.polyfit
   </a>
  </li>
 </ul>
@@ -244,56 +242,32 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   1. Comprendre ses erreurs
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-et-les-messages-d-erreurs">
+   1.1. Python et les messages d’erreurs.
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#python-et-les-messages-d-erreurs">
-     1.1. Python et les messages d’erreurs.
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exemple-basique">
+     1.1.1. Exemple basique
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#exemple-basique">
-       1.1.1. Exemple basique
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#le-cas-d-erreur-dans-une-fonction">
-       1.1.2. Le cas d’erreur dans une fonction
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#les-parentheses">
-       1.1.3. Les parenthèses…
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pas-d-erreur-mais">
-     1.2. Pas d’erreur mais…
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#le-cas-d-erreur-dans-une-fonction">
+     1.1.2. Le cas d’erreur dans une fonction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#les-parentheses">
+     1.1.3. Les parenthèses…
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#la-fonction-numpy-polyfit">
-   2. La fonction numpy.polyfit
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pas-d-erreur-mais">
+   1.2. Pas d’erreur mais…
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#la-syntaxe">
-     2.1. La syntaxe
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#un-exemple">
-     2.2. Un exemple
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -508,63 +482,6 @@
 </div>
 </div>
 </div>
-<div class="section" id="la-fonction-numpy-polyfit">
-<h1><span class="section-number">2. </span>La fonction numpy.polyfit<a class="headerlink" href="#la-fonction-numpy-polyfit" title="Permalink to this headline">¶</a></h1>
-<p>Il arrive fréquemment qu’on veuille ajuster un modèle théorique sur des points de données expérimentaux. Le plus courramment utilisé pour non est l’ajustement d’un modèle affine <span class="math notranslate nohighlight">\(y = ax + b\)</span> à des points expérimentaux <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> (i allant de 1 à  N). On veut connaître les valeurs de <span class="math notranslate nohighlight">\(a\)</span> et <span class="math notranslate nohighlight">\(b\)</span> qui donne une droite passant au plus près des points expérimentaux.</p>
-<p>On ne va pas présenter ici ce que signifie “au plus près”, ni comment sont déterminer les coefficients <span class="math notranslate nohighlight">\(a\)</span> et <span class="math notranslate nohighlight">\(b\)</span>. On présente juste une fonction (<code class="docutils literal notranslate"><span class="pre">polyfit</span></code>) de la bibliothèque <code class="docutils literal notranslate"><span class="pre">numpy</span></code> qui permet justement de réaliser cet ajustement (on parle de <strong>régression linéaire</strong>).</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">polyfit</span></code> permet de réaliser un ajustement par un polynôme de degré <code class="docutils literal notranslate"><span class="pre">n</span></code> quelconque. On se limitera ici à <span class="math notranslate nohighlight">\(n=1\)</span> soit une droite.</p>
-</div>
-<div class="section" id="la-syntaxe">
-<h2><span class="section-number">2.1. </span>La syntaxe<a class="headerlink" href="#la-syntaxe" title="Permalink to this headline">¶</a></h2>
-<p>On dispose de deux vecteurs numpy (ou listes classiques) contenant les <span class="math notranslate nohighlight">\(x_i\)</span> (variable <code class="docutils literal notranslate"><span class="pre">xi</span></code>) et les <span class="math notranslate nohighlight">\(y_i\)</span> (variable <code class="docutils literal notranslate"><span class="pre">yi</span></code>) expérimentaux. On écrit :</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">polyfit</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>  <span class="c1"># n est le degré du polynôme d&#39;ajustement donc pour nous n=1</span>
-
-</pre></div>
-</div>
-<div class="margin sidebar">
-<p class="sidebar-title"></p>
-<p><code class="docutils literal notranslate"><span class="pre">polyfit</span></code> permet de réaliser un ajustement par un polynôme de degré <code class="docutils literal notranslate"><span class="pre">n</span></code> quelconque. On se limitera ici à <span class="math notranslate nohighlight">\(n=1\)</span> soit une droite.</p>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">p</span></code> est un vecteur numpy contenant les coefficients du polynôme par ordre de puissance décroissante. Ainsi pour :</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">polyfit</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># n est le degré du polynôme d&#39;ajustement donc pour nous n=1</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">p</span></code> contient : <code class="docutils literal notranslate"><span class="pre">[a,</span> <span class="pre">b]</span></code> avec comme modèle : <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">ax</span> <span class="pre">+</span> <span class="pre">b</span></code>. On y accède par : <code class="docutils literal notranslate"><span class="pre">p[0]</span></code> (pente) et <code class="docutils literal notranslate"><span class="pre">p[1]</span></code> (ordonnée à l’origine).</p>
-</div>
-<div class="section" id="un-exemple">
-<h2><span class="section-number">2.2. </span>Un exemple<a class="headerlink" href="#un-exemple" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Fausses (!) données expérimentales &quot;&quot;&quot;</span>
-<span class="n">xi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">])</span>
-<span class="n">yi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">4.4</span><span class="p">,</span> <span class="mf">5.7</span><span class="p">,</span> <span class="mf">7.2</span><span class="p">,</span> <span class="mf">11.7</span><span class="p">,</span> <span class="mf">13.3</span><span class="p">,</span> <span class="mf">21.8</span><span class="p">])</span>
-
-<span class="sd">&quot;&quot;&quot;Ajustement linéaire&quot;&quot;&quot;</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">y_adj</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">xi</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># On applique la droite ajusté aux xi pour comparaison.</span>
-
-
-<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Ajustement linéaire&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Données expérimentales&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>  <span class="c1"># On voit l&#39;intérêt des options</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">y_adj</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ajustement&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>  <span class="c1"># On voit l&#39;intérêt des options</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3701688100&gt;
-</pre></div>
-</div>
-<img alt="../_images/complement_13_1.png" src="../_images/complement_13_1.png" />
-</div>
-</div>
-</div>
-</div>
 
     <script type="text/x-thebe-config">
     {
@@ -591,7 +508,7 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="exo_science_2.html" title="previous page"><span class="section-number">1. </span>S’entraîner</a>
+    <a class='left-prev' id="prev-link" href="exo_science_2.html" title="previous page"><span class="section-number">2. </span>S’entraîner (Import et tirages aléatoires)</a>
 
         </div>
         

@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. S’entraîner (régression linéaire) &#8212; Python : Bases à connaître - Exercice</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.c441f2ba0852f4cabcb80105e3a46ae6.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="canonical" href="https://pcsi3physiquestan.github.io/intro_python_td_source/notebook/exo_polyfit.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. S’entraîner (Import et tirages aléatoires)" href="exo_science_2.html" />
+    <link rel="prev" title="1. S’entraîner" href="exo_science.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://pcsi3physiquestan.github.io/intro_python_td_source/notebook/exo_polyfit.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="S’entraîner (régression linéaire)" />
+<meta property="og:description" content="S’entraîner (régression linéaire)  Exemple simple  On veut mesurer une capacité C d’un condensateur. On étudie pour cela le régime libre d’un circuit RC avec un" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python : Bases à connaître - Exercice</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro_python.html">
+   Eléments de bases pour programmer en Python
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Réviser les bases
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="exo_general.html">
+   1. S’entraîner.
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Bilbiothèques scientifiques
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="exo_science.html">
+   1. S’entraîner
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Plus loin avec numpy
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   1. S’entraîner (régression linéaire)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exo_science_2.html">
+   2. S’entraîner (Import et tirages aléatoires)
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Compléments
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="complement.html">
+   1. Comprendre ses erreurs
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <a href="https://stanislas.edunao.com">Plateforme Moodle</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/notebook/exo_polyfit.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebook/exo_polyfit.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/notebook/exo_polyfit.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exemple-simple">
+   1.1. Exemple simple
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#utiliser-un-modele-ajuste">
+   1.2. Utiliser un modèle ajusté
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="s-entrainer-regression-lineaire">
+<h1><span class="section-number">1. </span>S’entraîner (régression linéaire)<a class="headerlink" href="#s-entrainer-regression-lineaire" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="exemple-simple">
+<h2><span class="section-number">1.1. </span>Exemple simple<a class="headerlink" href="#exemple-simple" title="Permalink to this headline">¶</a></h2>
+<p>On veut mesurer une capacité <span class="math notranslate nohighlight">\(C\)</span> d’un condensateur. On étudie pour cela le régime libre d’un circuit RC avec une résistance <span class="math notranslate nohighlight">\(R\)</span> variable. On mesure le temps caractéristique <span class="math notranslate nohighlight">\(\tau\)</span> pour différente valeur de <span class="math notranslate nohighlight">\(R\)</span>. On obtient les valeurs suivantes :</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><style  type="text/css" >
+</style><table id="T_215dd_" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >R(Ohm)</th>        <th class="col_heading level0 col1" >tau(micro s)</th>    </tr></thead><tbody>
+                <tr>
+                        <th id="T_215dd_level0_row0" class="row_heading level0 row0" >0</th>
+                        <td id="T_215dd_row0_col0" class="data row0 col0" >100.00</td>
+                        <td id="T_215dd_row0_col1" class="data row0 col1" >164.00</td>
+            </tr>
+            <tr>
+                        <th id="T_215dd_level0_row1" class="row_heading level0 row1" >1</th>
+                        <td id="T_215dd_row1_col0" class="data row1 col0" >150.00</td>
+                        <td id="T_215dd_row1_col1" class="data row1 col1" >196.00</td>
+            </tr>
+            <tr>
+                        <th id="T_215dd_level0_row2" class="row_heading level0 row2" >2</th>
+                        <td id="T_215dd_row2_col0" class="data row2 col0" >200.00</td>
+                        <td id="T_215dd_row2_col1" class="data row2 col1" >275.00</td>
+            </tr>
+            <tr>
+                        <th id="T_215dd_level0_row3" class="row_heading level0 row3" >3</th>
+                        <td id="T_215dd_row3_col0" class="data row3 col0" >250.00</td>
+                        <td id="T_215dd_row3_col1" class="data row3 col1" >294.00</td>
+            </tr>
+            <tr>
+                        <th id="T_215dd_level0_row4" class="row_heading level0 row4" >4</th>
+                        <td id="T_215dd_row4_col0" class="data row4 col0" >300.00</td>
+                        <td id="T_215dd_row4_col1" class="data row4 col1" >354.00</td>
+            </tr>
+            <tr>
+                        <th id="T_215dd_level0_row5" class="row_heading level0 row5" >5</th>
+                        <td id="T_215dd_row5_col0" class="data row5 col0" >350.00</td>
+                        <td id="T_215dd_row5_col1" class="data row5 col1" >396.00</td>
+            </tr>
+            <tr>
+                        <th id="T_215dd_level0_row6" class="row_heading level0 row6" >6</th>
+                        <td id="T_215dd_row6_col0" class="data row6 col0" >400.00</td>
+                        <td id="T_215dd_row6_col1" class="data row6 col1" >481.00</td>
+            </tr>
+            <tr>
+                        <th id="T_215dd_level0_row7" class="row_heading level0 row7" >7</th>
+                        <td id="T_215dd_row7_col0" class="data row7 col0" >450.00</td>
+                        <td id="T_215dd_row7_col1" class="data row7 col1" >497.00</td>
+            </tr>
+            <tr>
+                        <th id="T_215dd_level0_row8" class="row_heading level0 row8" >8</th>
+                        <td id="T_215dd_row8_col0" class="data row8 col0" >500.00</td>
+                        <td id="T_215dd_row8_col1" class="data row8 col1" >558.00</td>
+            </tr>
+    </tbody></table></div></div>
+</div>
+<p>Un bilan sur les sources d’incertitude amène aux conclusions suivantes :</p>
+<ul class="simple">
+<li><p>l’incertitude sur le temps caratéristique est de 5%</p></li>
+<li><p>l’incertitude sur les résistances sont de 2%</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Détermination de C</p>
+<ol class="simple">
+<li><p>Représenter <span class="math notranslate nohighlight">\(\tau\)</span> en fonction de R avec les croix d’incertitudes. On utilisera la fonction <code class="docutils literal notranslate"><span class="pre">errorbar</span></code>.</p></li>
+<li><p>Vérifier que le modèle attendu <span class="math notranslate nohighlight">\(\tau = RC\)</span> est visuellement possible.</p></li>
+<li><p>Estimer la capacitance <span class="math notranslate nohighlight">\(C\)</span> par régression linéaire puis représenter la droite d’ajustement affine.</p></li>
+<li><p>Une méthode qualitative pour vérifier si le modèle est cohérent avec les incertitudes de mesure est de vérifier si la droite d’ajustement passe bien par les barre d’incertitude. Tester ici la cohérence du modèle.</p></li>
+<li><p>La relation étant linéaire, on peut aussi estimer <span class="math notranslate nohighlight">\(C\)</span> comme la moyenne des rapport <span class="math notranslate nohighlight">\(\frac{\tau}{R}\)</span>. Estimer la capacitance de cette manière et vérifier qu’on obtient le même ordre de grandeur.</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>On rappelle la fonction pour tracer des points de mesures avec des barres d’erreurs :</p>
+<p><code class="docutils literal notranslate"><span class="pre">errorbar(x,</span> <span class="pre">y,</span> <span class="pre">yerr=inc_y,</span> <span class="pre">options...)</span></code></p>
+</div>
+</div>
+</div>
+<div class="section" id="utiliser-un-modele-ajuste">
+<h2><span class="section-number">1.2. </span>Utiliser un modèle ajusté<a class="headerlink" href="#utiliser-un-modele-ajuste" title="Permalink to this headline">¶</a></h2>
+<p>On veut mesurer la concentration de l’additif alimentaire E131 (bleu patenté) dans des bonbons gélifiées. On réalise pour cela un dosage par absorbance, c’est-à-dire qu’on va mesurer l’absorbance <span class="math notranslate nohighlight">\(A_{640nm}\)</span> à la longueur d’onde <span class="math notranslate nohighlight">\(640nm\)</span> de plusieurs solutions contenant du bleu de patenté à des concentrations connues <span class="math notranslate nohighlight">\(C_i\)</span>. En mesurant ensuite l’absorbance d’une solution contenant un bonbon gélifié bleu dissous, on déterminera sa concentration.</p>
+<blockquote>
+<div><p><strong>Fabrication des solutions étalons :</strong></p>
+<p>On utilise une solution mère de concentration <span class="math notranslate nohighlight">\(C_0 = (2.04 \pm 0.01) \times 10^{-5} mol.L^{-1}\)</span>. On prélève un volume <span class="math notranslate nohighlight">\(V_1\)</span> (inférieur ou égal à 10mL) qu’on complète par un volume <span class="math notranslate nohighlight">\(V_2\)</span> d’eau distillée tel que <span class="math notranslate nohighlight">\(V_T= V_1 + V_2 = 10mL\)</span>. La concentration <span class="math notranslate nohighlight">\(C_i\)</span> dans un tube où <span class="math notranslate nohighlight">\(V_1 = V_{1i}\)</span> est alors :</p>
+<div class="math notranslate nohighlight">
+\[C_i = C_0 \frac{V_{1i}}{V_T}\]</div>
+<p>Le mode opératoire utilisé et l’analyse des sources d’incertitudes amène à une expression de l’incertitude sur <span class="math notranslate nohighlight">\(C_i\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[u(C_i) = \frac{C_0 u_i}{V_T} \sqrt{1 + {\frac{C_i}{C_0}}^2}\]</div>
+<p>avec <span class="math notranslate nohighlight">\(u_i = 0.1 mL\)</span> (l’incertitude sur la concentration a une influence négligeable).</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Loi de Beer-Lambert :</strong></p>
+<p>La loi de Beer-Lambert prévoit une relation linéaire entre la concentration d’une solution colorée et l’absorbance de cette solution :</p>
+<div class="math notranslate nohighlight">
+\[A_{640nm, i} = \alpha_{E131, 640nm} C_i\]</div>
+<p>Les mesures d’absorbances seront considérées comme d’incertitude négligeable.</p>
+</div></blockquote>
+<p>On donne les données mesurées :</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><style  type="text/css" >
+</style><table id="T_e7474_" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >Vi(mL)</th>        <th class="col_heading level0 col1" >A(SI)</th>    </tr></thead><tbody>
+                <tr>
+                        <th id="T_e7474_level0_row0" class="row_heading level0 row0" >0</th>
+                        <td id="T_e7474_row0_col0" class="data row0 col0" >1.00</td>
+                        <td id="T_e7474_row0_col1" class="data row0 col1" >0.13</td>
+            </tr>
+            <tr>
+                        <th id="T_e7474_level0_row1" class="row_heading level0 row1" >1</th>
+                        <td id="T_e7474_row1_col0" class="data row1 col0" >2.50</td>
+                        <td id="T_e7474_row1_col1" class="data row1 col1" >0.43</td>
+            </tr>
+            <tr>
+                        <th id="T_e7474_level0_row2" class="row_heading level0 row2" >2</th>
+                        <td id="T_e7474_row2_col0" class="data row2 col0" >5.00</td>
+                        <td id="T_e7474_row2_col1" class="data row2 col1" >0.83</td>
+            </tr>
+            <tr>
+                        <th id="T_e7474_level0_row3" class="row_heading level0 row3" >3</th>
+                        <td id="T_e7474_row3_col0" class="data row3 col0" >7.50</td>
+                        <td id="T_e7474_row3_col1" class="data row3 col1" >1.27</td>
+            </tr>
+            <tr>
+                        <th id="T_e7474_level0_row4" class="row_heading level0 row4" >4</th>
+                        <td id="T_e7474_row4_col0" class="data row4 col0" >10.00</td>
+                        <td id="T_e7474_row4_col1" class="data row4 col1" >1.76</td>
+            </tr>
+    </tbody></table></div></div>
+</div>
+<div class="admonition-dosage-par-absorbance admonition">
+<p class="admonition-title">Dosage par absorbance</p>
+<ol class="simple">
+<li><p>Créer deux vecteur numpy contenant les volumes <span class="math notranslate nohighlight">\(V_{1i}\)</span> et les absorbances <span class="math notranslate nohighlight">\(A_i\)</span> puis obtenir deux vecteurs numpy contenant les concentration <span class="math notranslate nohighlight">\(C_i\)</span> et les incertitudes <span class="math notranslate nohighlight">\(u(C_i)\)</span>.</p></li>
+<li><p>Représenter graphiquement <span class="math notranslate nohighlight">\(C_i\)</span> en fonction de <span class="math notranslate nohighlight">\(A_i\)</span> et vérifier que le modèle linéaire proposé par la loi de Beer-Lambert n’est pas aberrant. <em>On utilisera la fonction <code class="docutils literal notranslate"><span class="pre">errorbar</span></code> pour représenter les barres d’incertitudes associées aux concentrations</em>.</p></li>
+<li><p>Réaliser une régression linéaire sans tenir compte des incertitudes sur les concentrations et tracer la droite d’ajustement affine sur le même graphique que précédemment. (<em>Supprimer le <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> précédent</em>).</p></li>
+<li><p>Une méthode qualitative pour vérifier si le modèle est cohérent avec les incertitudes de mesure est de vérifier si la droite d’ajustement passe bien par les barre d’incertitude. Tester ici la cohérence du modèle.</p></li>
+<li><p>On dilue un bonbon dans de l’eau diluée de sorte que le volume de liquide (avec le bonbon) soit <span class="math notranslate nohighlight">\(V_f = 50.00 mL\)</span>. On mesure alors l’absorbance de la solution ainsi réalisée, on obtient <span class="math notranslate nohighlight">\(A_{649nm, f} = 0.665 SI\)</span>. Utiliser Python comme calculatrice et les données du modèle ajuster pour déterminer la quantité maximale de bonbons bleus qu’on peut manger par jour sans dépasser la DJA (Dose journalière admissible) de l’additif E131 qui est de 2.5mg par kg de masse corporelle. On donne la masse molaire du bleu patenté <span class="math notranslate nohighlight">\(M = 582,66 g.mol^{-1}\)</span>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Le nombre de bonbon trouvé ne tient pas compte de la quantité de sucre ingurgitée…</p>
+</div>
+</div>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/exo_polyfit_5_0.png" src="../_images/exo_polyfit_5_0.png" />
+</div>
+</div>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Le tracé précédent rend l&#39;hypothèse linéaire possible.
+On réalise donc l&#39;ajustement.
+-------------------
+Le modèle ajusté a pour équation :
+1.139855247404751 * A 0.05293999024471903
+Il faudra bien sûr réfléchir au nombre de chiffres significatifs à garder
+-------------------
+</pre></div>
+</div>
+<img alt="../_images/exo_polyfit_6_1.png" src="../_images/exo_polyfit_6_1.png" />
+</div>
+</div>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------
+Le nombre maximal de bonbons qu&#39;on peut manger est :
+741.0
+---------------
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebook"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="exo_science.html" title="previous page"><span class="section-number">1. </span>S’entraîner</a>
+    <a class='right-next' id="next-link" href="exo_science_2.html" title="next page"><span class="section-number">2. </span>S’entraîner (Import et tirages aléatoires)</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Capacités numériques<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
