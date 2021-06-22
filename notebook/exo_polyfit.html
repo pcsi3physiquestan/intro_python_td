@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. S’entraîner (régression linéaire) &#8212; Python : Bases à connaître - Exercice</title>
+    <title>1. S’entraîner (Régression linéaire) &#8212; Python : Bases à connaître - Exercice</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -58,7 +58,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2. S’entraîner (Import et tirages aléatoires)" href="exo_science_2.html" />
-    <link rel="prev" title="1. S’entraîner" href="exo_science.html" />
+    <link rel="prev" title="1. S’entraîner." href="exo_science.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -67,8 +67,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://pcsi3physiquestan.github.io/intro_python_td_source/notebook/exo_polyfit.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="S’entraîner (régression linéaire)" />
-<meta property="og:description" content="S’entraîner (régression linéaire)  Exemple simple  On veut mesurer une capacité C d’un condensateur. On étudie pour cela le régime libre d’un circuit RC avec un" />
+<meta property="og:title"       content="S’entraîner (Régression linéaire)" />
+<meta property="og:description" content="S’entraîner (Régression linéaire)  La partie donnant les concepts pour faire ces exercices est accessible ici.  Exemple simple  On veut mesurer une capacité C d" />
 
 
 <meta name="twitter:card" content="summary" />
@@ -122,7 +122,7 @@
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="exo_science.html">
-   1. S’entraîner
+   1. S’entraîner.
   </a>
  </li>
 </ul>
@@ -134,7 +134,7 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   1. S’entraîner (régression linéaire)
+   1. S’entraîner (Régression linéaire)
   </a>
  </li>
  <li class="toctree-l1">
@@ -268,58 +268,59 @@
               <div>
                 
   <div class="section" id="s-entrainer-regression-lineaire">
-<h1><span class="section-number">1. </span>S’entraîner (régression linéaire)<a class="headerlink" href="#s-entrainer-regression-lineaire" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1. </span>S’entraîner (Régression linéaire)<a class="headerlink" href="#s-entrainer-regression-lineaire" title="Permalink to this headline">¶</a></h1>
+<p>La partie donnant les concepts pour faire ces exercices est <a class="reference external" href="https://pcsi3physiquestan.github.io/intro_python/notebook/np_polyfit.html">accessible ici</a>.</p>
 <div class="section" id="exemple-simple">
 <h2><span class="section-number">1.1. </span>Exemple simple<a class="headerlink" href="#exemple-simple" title="Permalink to this headline">¶</a></h2>
 <p>On veut mesurer une capacité <span class="math notranslate nohighlight">\(C\)</span> d’un condensateur. On étudie pour cela le régime libre d’un circuit RC avec une résistance <span class="math notranslate nohighlight">\(R\)</span> variable. On mesure le temps caractéristique <span class="math notranslate nohighlight">\(\tau\)</span> pour différente valeur de <span class="math notranslate nohighlight">\(R\)</span>. On obtient les valeurs suivantes :</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><style  type="text/css" >
-</style><table id="T_d3bc0_" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >R(Ohm)</th>        <th class="col_heading level0 col1" >tau(micro s)</th>    </tr></thead><tbody>
+</style><table id="T_25eb4_" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >R(Ohm)</th>        <th class="col_heading level0 col1" >tau(micro s)</th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_d3bc0_level0_row0" class="row_heading level0 row0" >0</th>
-                        <td id="T_d3bc0_row0_col0" class="data row0 col0" >100.00</td>
-                        <td id="T_d3bc0_row0_col1" class="data row0 col1" >164.00</td>
+                        <th id="T_25eb4_level0_row0" class="row_heading level0 row0" >0</th>
+                        <td id="T_25eb4_row0_col0" class="data row0 col0" >100.00</td>
+                        <td id="T_25eb4_row0_col1" class="data row0 col1" >164.00</td>
             </tr>
             <tr>
-                        <th id="T_d3bc0_level0_row1" class="row_heading level0 row1" >1</th>
-                        <td id="T_d3bc0_row1_col0" class="data row1 col0" >150.00</td>
-                        <td id="T_d3bc0_row1_col1" class="data row1 col1" >196.00</td>
+                        <th id="T_25eb4_level0_row1" class="row_heading level0 row1" >1</th>
+                        <td id="T_25eb4_row1_col0" class="data row1 col0" >150.00</td>
+                        <td id="T_25eb4_row1_col1" class="data row1 col1" >196.00</td>
             </tr>
             <tr>
-                        <th id="T_d3bc0_level0_row2" class="row_heading level0 row2" >2</th>
-                        <td id="T_d3bc0_row2_col0" class="data row2 col0" >200.00</td>
-                        <td id="T_d3bc0_row2_col1" class="data row2 col1" >275.00</td>
+                        <th id="T_25eb4_level0_row2" class="row_heading level0 row2" >2</th>
+                        <td id="T_25eb4_row2_col0" class="data row2 col0" >200.00</td>
+                        <td id="T_25eb4_row2_col1" class="data row2 col1" >275.00</td>
             </tr>
             <tr>
-                        <th id="T_d3bc0_level0_row3" class="row_heading level0 row3" >3</th>
-                        <td id="T_d3bc0_row3_col0" class="data row3 col0" >250.00</td>
-                        <td id="T_d3bc0_row3_col1" class="data row3 col1" >294.00</td>
+                        <th id="T_25eb4_level0_row3" class="row_heading level0 row3" >3</th>
+                        <td id="T_25eb4_row3_col0" class="data row3 col0" >250.00</td>
+                        <td id="T_25eb4_row3_col1" class="data row3 col1" >294.00</td>
             </tr>
             <tr>
-                        <th id="T_d3bc0_level0_row4" class="row_heading level0 row4" >4</th>
-                        <td id="T_d3bc0_row4_col0" class="data row4 col0" >300.00</td>
-                        <td id="T_d3bc0_row4_col1" class="data row4 col1" >354.00</td>
+                        <th id="T_25eb4_level0_row4" class="row_heading level0 row4" >4</th>
+                        <td id="T_25eb4_row4_col0" class="data row4 col0" >300.00</td>
+                        <td id="T_25eb4_row4_col1" class="data row4 col1" >354.00</td>
             </tr>
             <tr>
-                        <th id="T_d3bc0_level0_row5" class="row_heading level0 row5" >5</th>
-                        <td id="T_d3bc0_row5_col0" class="data row5 col0" >350.00</td>
-                        <td id="T_d3bc0_row5_col1" class="data row5 col1" >396.00</td>
+                        <th id="T_25eb4_level0_row5" class="row_heading level0 row5" >5</th>
+                        <td id="T_25eb4_row5_col0" class="data row5 col0" >350.00</td>
+                        <td id="T_25eb4_row5_col1" class="data row5 col1" >396.00</td>
             </tr>
             <tr>
-                        <th id="T_d3bc0_level0_row6" class="row_heading level0 row6" >6</th>
-                        <td id="T_d3bc0_row6_col0" class="data row6 col0" >400.00</td>
-                        <td id="T_d3bc0_row6_col1" class="data row6 col1" >481.00</td>
+                        <th id="T_25eb4_level0_row6" class="row_heading level0 row6" >6</th>
+                        <td id="T_25eb4_row6_col0" class="data row6 col0" >400.00</td>
+                        <td id="T_25eb4_row6_col1" class="data row6 col1" >481.00</td>
             </tr>
             <tr>
-                        <th id="T_d3bc0_level0_row7" class="row_heading level0 row7" >7</th>
-                        <td id="T_d3bc0_row7_col0" class="data row7 col0" >450.00</td>
-                        <td id="T_d3bc0_row7_col1" class="data row7 col1" >497.00</td>
+                        <th id="T_25eb4_level0_row7" class="row_heading level0 row7" >7</th>
+                        <td id="T_25eb4_row7_col0" class="data row7 col0" >450.00</td>
+                        <td id="T_25eb4_row7_col1" class="data row7 col1" >497.00</td>
             </tr>
             <tr>
-                        <th id="T_d3bc0_level0_row8" class="row_heading level0 row8" >8</th>
-                        <td id="T_d3bc0_row8_col0" class="data row8 col0" >500.00</td>
-                        <td id="T_d3bc0_row8_col1" class="data row8 col1" >558.00</td>
+                        <th id="T_25eb4_level0_row8" class="row_heading level0 row8" >8</th>
+                        <td id="T_25eb4_row8_col0" class="data row8 col0" >500.00</td>
+                        <td id="T_25eb4_row8_col1" class="data row8 col1" >558.00</td>
             </tr>
     </tbody></table></div></div>
 </div>
@@ -343,7 +344,62 @@
 <p><code class="docutils literal notranslate"><span class="pre">errorbar(x,</span> <span class="pre">y,</span> <span class="pre">yerr=inc_y,</span> <span class="pre">options...)</span></code></p>
 </div>
 </div>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/exo_polyfit_3_0.png" src="../_images/exo_polyfit_3_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Les points sont plutôt alignés. C&#39;est encourageant pour l&#39;utilisation de la relation tau = RC
+</pre></div>
 </div>
+</div>
+</div>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------
+Droite d&#39;ajustement :
+tau = 0.9976666666666668* R + 57.922222222222
+Il faudrait arrondir en réfléchissant aux chiffres significatifs
+----------------
+La droite passe globalement par les croix d&#39;incertitude à part les points 2 et 3 pour lesquels il faudrait approfondir l&#39;analyse.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------
+Estimation de C :
+C = 9.976666666666668e-07 F
+Il faudrait arrondir en réfléchissant aux chiffres significatifs.
+----------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------
+Estimation de C par moyenne des rapports :
+C = 1.2480044091710756e-06 F
+Il faudrait arrondir en réfléchissant aux chiffres significatifs.
+----------------
+</pre></div>
+</div>
+</div>
+</div>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Commentaire sur les valeurs trouvées.<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">Vous devriez trouver le même ordre de grandeur mais pas la même valeur (plus de 20% d’écart tout de même). Cela peut s’expliquer par :</p>
+<ul class="simple">
+<li><p class="card-text">les incertitudes qui, si on les estime sont relativement grandes</p></li>
+<li><p class="card-text">un biais dans les mesures : l’ordonnée à l’origine devrait être nulle or la régression linéaire donne une valeur relativement importante (jusqu’à 30% des valeurs mesurées). Le modèle est donc plutôt affine et non linéaire. La méthode des rapports <span class="math notranslate nohighlight">\(\tau/R\)</span> n’est donc peut-être pas adaptée. C’est l’avantage de la régression linéaire qui permet de tenir compte d’un possible biais dans les mesures.</p></li>
+</ul>
+</div>
+</details></div>
 <div class="section" id="utiliser-un-modele-ajuste">
 <h2><span class="section-number">1.2. </span>Utiliser un modèle ajusté<a class="headerlink" href="#utiliser-un-modele-ajuste" title="Permalink to this headline">¶</a></h2>
 <p>On veut mesurer la concentration de l’additif alimentaire E131 (bleu patenté) dans des bonbons gélifiées. On réalise pour cela un dosage par absorbance, c’est-à-dire qu’on va mesurer l’absorbance <span class="math notranslate nohighlight">\(A_{640nm}\)</span> à la longueur d’onde <span class="math notranslate nohighlight">\(640nm\)</span> de plusieurs solutions contenant du bleu de patenté à des concentrations connues <span class="math notranslate nohighlight">\(C_i\)</span>. En mesurant ensuite l’absorbance d’une solution contenant un bonbon gélifié bleu dissous, on déterminera sa concentration.</p>
@@ -368,31 +424,31 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><style  type="text/css" >
-</style><table id="T_cc1a7_" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >Vi(mL)</th>        <th class="col_heading level0 col1" >A(SI)</th>    </tr></thead><tbody>
+</style><table id="T_48a2c_" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >Vi(mL)</th>        <th class="col_heading level0 col1" >A(SI)</th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_cc1a7_level0_row0" class="row_heading level0 row0" >0</th>
-                        <td id="T_cc1a7_row0_col0" class="data row0 col0" >1.00</td>
-                        <td id="T_cc1a7_row0_col1" class="data row0 col1" >0.13</td>
+                        <th id="T_48a2c_level0_row0" class="row_heading level0 row0" >0</th>
+                        <td id="T_48a2c_row0_col0" class="data row0 col0" >1.00</td>
+                        <td id="T_48a2c_row0_col1" class="data row0 col1" >0.13</td>
             </tr>
             <tr>
-                        <th id="T_cc1a7_level0_row1" class="row_heading level0 row1" >1</th>
-                        <td id="T_cc1a7_row1_col0" class="data row1 col0" >2.50</td>
-                        <td id="T_cc1a7_row1_col1" class="data row1 col1" >0.43</td>
+                        <th id="T_48a2c_level0_row1" class="row_heading level0 row1" >1</th>
+                        <td id="T_48a2c_row1_col0" class="data row1 col0" >2.50</td>
+                        <td id="T_48a2c_row1_col1" class="data row1 col1" >0.43</td>
             </tr>
             <tr>
-                        <th id="T_cc1a7_level0_row2" class="row_heading level0 row2" >2</th>
-                        <td id="T_cc1a7_row2_col0" class="data row2 col0" >5.00</td>
-                        <td id="T_cc1a7_row2_col1" class="data row2 col1" >0.83</td>
+                        <th id="T_48a2c_level0_row2" class="row_heading level0 row2" >2</th>
+                        <td id="T_48a2c_row2_col0" class="data row2 col0" >5.00</td>
+                        <td id="T_48a2c_row2_col1" class="data row2 col1" >0.83</td>
             </tr>
             <tr>
-                        <th id="T_cc1a7_level0_row3" class="row_heading level0 row3" >3</th>
-                        <td id="T_cc1a7_row3_col0" class="data row3 col0" >7.50</td>
-                        <td id="T_cc1a7_row3_col1" class="data row3 col1" >1.27</td>
+                        <th id="T_48a2c_level0_row3" class="row_heading level0 row3" >3</th>
+                        <td id="T_48a2c_row3_col0" class="data row3 col0" >7.50</td>
+                        <td id="T_48a2c_row3_col1" class="data row3 col1" >1.27</td>
             </tr>
             <tr>
-                        <th id="T_cc1a7_level0_row4" class="row_heading level0 row4" >4</th>
-                        <td id="T_cc1a7_row4_col0" class="data row4 col0" >10.00</td>
-                        <td id="T_cc1a7_row4_col1" class="data row4 col1" >1.76</td>
+                        <th id="T_48a2c_level0_row4" class="row_heading level0 row4" >4</th>
+                        <td id="T_48a2c_row4_col0" class="data row4 col0" >10.00</td>
+                        <td id="T_48a2c_row4_col1" class="data row4 col1" >1.76</td>
             </tr>
     </tbody></table></div></div>
 </div>
@@ -412,7 +468,7 @@
 </div>
 <div class="cell tag_remove-input tag_hide-output docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/exo_polyfit_5_0.png" src="../_images/exo_polyfit_5_0.png" />
+<img alt="../_images/exo_polyfit_10_0.png" src="../_images/exo_polyfit_10_0.png" />
 </div>
 </div>
 <div class="cell tag_remove-input tag_hide-output docutils container">
@@ -426,7 +482,7 @@ Il faudra bien sûr réfléchir au nombre de chiffres significatifs à garder
 -------------------
 </pre></div>
 </div>
-<img alt="../_images/exo_polyfit_6_1.png" src="../_images/exo_polyfit_6_1.png" />
+<img alt="../_images/exo_polyfit_11_1.png" src="../_images/exo_polyfit_11_1.png" />
 </div>
 </div>
 <div class="cell tag_remove-input tag_hide-output docutils container">
@@ -467,7 +523,7 @@ Le nombre maximal de bonbons qu&#39;on peut manger est :
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="exo_science.html" title="previous page"><span class="section-number">1. </span>S’entraîner</a>
+    <a class='left-prev' id="prev-link" href="exo_science.html" title="previous page"><span class="section-number">1. </span>S’entraîner.</a>
     <a class='right-next' id="next-link" href="exo_science_2.html" title="next page"><span class="section-number">2. </span>S’entraîner (Import et tirages aléatoires)</a>
 
         </div>
