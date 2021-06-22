@@ -235,6 +235,7 @@ _Compléments utiles_:
 ```{code-cell}
 :tags: [remove-input, hide-output]
 donnees = np.loadtxt('Sf6/vitesse_son_2.dat', skiprows=10, delimiter=",")
+distances = donnees[:, 0]  # Récupération des distances.
 
 """Tracé des histogrammes"""
 f, ax = plt.subplots()
