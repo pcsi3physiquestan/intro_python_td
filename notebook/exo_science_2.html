@@ -5,9 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. S’entraîner (Import et tirages aléatoires) &#8212; Python : Bases à connaître - Exercice</title>
+    <title>4. S’entraîner (Import et tirages aléatoires) &#8212; Python : Bases à connaître - Exercice</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.c441f2ba0852f4cabcb80105e3a46ae6.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -34,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -44,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -57,25 +54,16 @@
     <link rel="canonical" href="https://pcsi3physiquestan.github.io/intro_python_td/notebook/exo_science_2.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Comprendre ses erreurs" href="complement.html" />
-    <link rel="prev" title="1. S’entraîner (Régression linéaire)" href="exo_polyfit.html" />
-
+    <link rel="next" title="5. Comprendre ses erreurs" href="complement.html" />
+    <link rel="prev" title="3. S’entraîner (Régression linéaire)" href="exo_polyfit.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-<!-- Opengraph tags -->
-<meta property="og:url"         content="https://pcsi3physiquestan.github.io/intro_python_td/notebook/exo_science_2.html" />
-<meta property="og:type"        content="article" />
-<meta property="og:title"       content="S’entraîner (Import et tirages aléatoires)" />
-<meta property="og:description" content="S’entraîner (Import et tirages aléatoires)  La partie donnant les concepts pour faire ces exercices est accessible ici.  Important  Une partie des exercices sui" />
-
-
-<meta name="twitter:card" content="summary" />
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -84,78 +72,79 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Python : Bases à connaître - Exercice</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Python : Bases à connaître - Exercice</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../intro_python.html">
    Eléments de bases pour programmer en Python
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Réviser les bases
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="exo_general.html">
    1. S’entraîner.
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Bilbiothèques scientifiques
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="exo_science.html">
-   1. S’entraîner.
+   2. S’entraîner.
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Plus loin avec numpy
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="exo_polyfit.html">
-   1. S’entraîner (Régression linéaire)
+   3. S’entraîner (Régression linéaire)
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   2. S’entraîner (Import et tirages aléatoires)
+   4. S’entraîner (Import et tirages aléatoires)
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Compléments
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="complement.html">
-   1. Comprendre ses erreurs
+   5. Comprendre ses erreurs
   </a>
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -208,12 +197,12 @@
 
             <!-- Source interaction buttons -->
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -239,36 +228,34 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#utilisation-de-numpy-random">
-   2.1. Utilisation de numpy.random
+   4.1. Utilisation de numpy.random
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#etude-de-donnees-experimentales">
-   2.2. Etude de données expérimentales
+   4.2. Etude de données expérimentales
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#experiences-multiples">
-   2.3. Expériences multiples
+   4.3. Expériences multiples
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#celerite-des-ultrasons">
-   2.4. Célérité des ultrasons
+   4.4. Célérité des ultrasons
   </a>
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
         </div>
     </div>
 </div>
@@ -278,7 +265,7 @@
               <div>
                 
   <div class="section" id="s-entrainer-import-et-tirages-aleatoires">
-<h1><span class="section-number">2. </span>S’entraîner (Import et tirages aléatoires)<a class="headerlink" href="#s-entrainer-import-et-tirages-aleatoires" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4. </span>S’entraîner (Import et tirages aléatoires)<a class="headerlink" href="#s-entrainer-import-et-tirages-aleatoires" title="Permalink to this headline">¶</a></h1>
 <p>La partie donnant les concepts pour faire ces exercices est <a class="reference external" href="https://pcsi3physiquestan.github.io/intro_python/notebook/import_file.html">accessible ici</a>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -286,7 +273,7 @@
 <p>Vous devrez ensuite réfléchir au chemin relatif à utiliser dans vos scripts pour importer les données expérimentales de ces fichiers.</p>
 </div>
 <div class="section" id="utilisation-de-numpy-random">
-<h2><span class="section-number">2.1. </span>Utilisation de numpy.random<a class="headerlink" href="#utilisation-de-numpy-random" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.1. </span>Utilisation de numpy.random<a class="headerlink" href="#utilisation-de-numpy-random" title="Permalink to this headline">¶</a></h2>
 <div class="tip admonition">
 <p class="admonition-title">Utilisation de numpy.random</p>
 <p>Vous devez :</p>
@@ -339,7 +326,7 @@ Quelques indices pour s’organiser<div class="summary-down docutils">
 </div>
 </div>
 <div class="section" id="etude-de-donnees-experimentales">
-<h2><span class="section-number">2.2. </span>Etude de données expérimentales<a class="headerlink" href="#etude-de-donnees-experimentales" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2. </span>Etude de données expérimentales<a class="headerlink" href="#etude-de-donnees-experimentales" title="Permalink to this headline">¶</a></h2>
 <div class="tip admonition">
 <p class="admonition-title">Etude de données expérimentales</p>
 <p>On étudie un circuit RC en régime libre. On a pris <span class="math notranslate nohighlight">\(R = 100k\Omega\)</span> et on veut mesurer la capacité <span class="math notranslate nohighlight">\(C\)</span> grâce aux données expérimentales. Les données sont fournies dans le fichier <code class="docutils literal notranslate"><span class="pre">circuit_rc_decharge.dat</span></code> accessible par <a class="reference external" href="https://github.com/pcsi3physiquestan/donnees_exp/blob/main/circuit_rc.dat?raw=true">ce lien</a>.</p>
@@ -439,7 +426,7 @@ Tous les chiffres ne sont pas forcément significatifs...
 </div>
 </div>
 <div class="section" id="experiences-multiples">
-<h2><span class="section-number">2.3. </span>Expériences multiples<a class="headerlink" href="#experiences-multiples" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3. </span>Expériences multiples<a class="headerlink" href="#experiences-multiples" title="Permalink to this headline">¶</a></h2>
 <div class="tip admonition">
 <p class="admonition-title">Expériences multiples</p>
 <p>On reprend l’exemple précédent (même valeurs de R et C) mais cette fois le montage réalisé au moyen d’un microcontrolleur Arduino a permis d’automatiser la mesure de la constante <span class="math notranslate nohighlight">\(\tau\)</span>. On a ainsi réalisé <span class="math notranslate nohighlight">\(N\)</span> décharges de C et le microcontrolleur a été programmé pour mesurer à chaque fois <span class="math notranslate nohighlight">\(\tau\)</span> et le transmettre à l’ordinateur. Un programme non présenté ici a stocké les valeurs de <span class="math notranslate nohighlight">\(\tau\)</span> dans un fichier accessible à <a class="reference external" href="https://github.com/pcsi3physiquestan/donnees_exp/blob/main/circuit_rc_auto.dat?raw=true">ce lien</a>.</p>
@@ -499,7 +486,7 @@ Valeur estimée de C : 9.985208000000001e-08
 </div>
 </div>
 <div class="section" id="celerite-des-ultrasons">
-<h2><span class="section-number">2.4. </span>Célérité des ultrasons<a class="headerlink" href="#celerite-des-ultrasons" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.4. </span>Célérité des ultrasons<a class="headerlink" href="#celerite-des-ultrasons" title="Permalink to this headline">¶</a></h2>
 <p>Cet exercice est un peu plus complet. Veillez à bien comprendre ce qui a été fait précédemment.</p>
 <div class="tip admonition">
 <p class="admonition-title">Célérité des ultrasons</p>
@@ -652,8 +639,8 @@ Valeur estimée de la célérité :
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="exo_polyfit.html" title="previous page"><span class="section-number">1. </span>S’entraîner (Régression linéaire)</a>
-    <a class='right-next' id="next-link" href="complement.html" title="next page"><span class="section-number">1. </span>Comprendre ses erreurs</a>
+    <a class='left-prev' id="prev-link" href="exo_polyfit.html" title="previous page"><span class="section-number">3. </span>S’entraîner (Régression linéaire)</a>
+    <a class='right-next' id="next-link" href="complement.html" title="next page"><span class="section-number">5. </span>Comprendre ses erreurs</a>
 
         </div>
         
@@ -674,11 +661,9 @@ Valeur estimée de la célérité :
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
-
-
-    
+  
   </body>
 </html>
