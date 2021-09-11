@@ -310,7 +310,7 @@ Quelques indices pour s’organiser<div class="summary-down docutils">
 <span class="n">N</span> <span class="o">=</span> <span class="mi">1000000</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
 
 <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Distribution statistique&quot;</span><span class="p">)</span>
@@ -318,7 +318,7 @@ Quelques indices pour s’organiser<div class="summary-down docutils">
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Valeurs accessibles&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Fréquences&quot;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;rice&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;rice&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
