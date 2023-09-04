@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3. S’entraîner (Régression linéaire) &#8212; Python : Bases à connaître - Exercice</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +19,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://pcsi3physiquestan.github.io/intro_python_td/notebook/exo_polyfit.html" />
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -58,10 +58,27 @@
     <link rel="next" title="4. S’entraîner (Import et tirages aléatoires)" href="exo_science_2.html" />
     <link rel="prev" title="2. S’entraîner." href="exo_science.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -70,10 +87,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">Python : Bases à connaître - Exercice</h1>
@@ -82,16 +101,17 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro_python.html">
-   Eléments de bases pour programmer en Python
-  </a>
- </li>
-</ul>
-<p class="caption">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro_python.html">
+                    Eléments de bases pour programmer en Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Réviser les bases
  </span>
@@ -103,7 +123,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Bilbiothèques scientifiques
  </span>
@@ -115,7 +135,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Plus loin avec numpy
  </span>
@@ -132,7 +152,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Compléments
  </span>
@@ -146,97 +166,217 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  <a href="https://stanislas.edunao.com">Plateforme Moodle</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../_sources/notebook/exo_polyfit.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebook/exo_polyfit.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pcsi3physiquestan/intro_python_td_source/main?urlpath=tree/notebook/exo_polyfit.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            <a href="https://stanislas.edunao.com">Plateforme Moodle</a>
             </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pcsi3physiquestan/intro_python_td_source/main?urlpath=tree/notebook/exo_polyfit.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/pcsi3physiquestan/intro_python_td_source/blob/main/notebook/exo_polyfit.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebook/exo_polyfit.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/notebook/exo_polyfit.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exemple-simple">
    3.1. Exemple simple
@@ -249,71 +389,110 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>S’entraîner (Régression linéaire)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exemple-simple">
+   3.1. Exemple simple
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#utiliser-un-modele-ajuste">
+   3.2. Utiliser un modèle ajusté
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="s-entrainer-regression-lineaire">
-<h1><span class="section-number">3. </span>S’entraîner (Régression linéaire)<a class="headerlink" href="#s-entrainer-regression-lineaire" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="s-entrainer-regression-lineaire">
+<h1><span class="section-number">3. </span>S’entraîner (Régression linéaire)<a class="headerlink" href="#s-entrainer-regression-lineaire" title="Permalink to this headline">#</a></h1>
 <p>La partie donnant les concepts pour faire ces exercices est <a class="reference external" href="https://pcsi3physiquestan.github.io/intro_python/notebook/np_polyfit.html">accessible ici</a>.</p>
 <div class="section" id="exemple-simple">
-<h2><span class="section-number">3.1. </span>Exemple simple<a class="headerlink" href="#exemple-simple" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1. </span>Exemple simple<a class="headerlink" href="#exemple-simple" title="Permalink to this headline">#</a></h2>
 <p>On veut mesurer une capacité <span class="math notranslate nohighlight">\(C\)</span> d’un condensateur. On étudie pour cela le régime libre d’un circuit RC avec une résistance <span class="math notranslate nohighlight">\(R\)</span> variable. On mesure le temps caractéristique <span class="math notranslate nohighlight">\(\tau\)</span> pour différente valeur de <span class="math notranslate nohighlight">\(R\)</span>. On obtient les valeurs suivantes :</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><style  type="text/css" >
-</style><table id="T_10d95_" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >R(Ohm)</th>        <th class="col_heading level0 col1" >tau(micro s)</th>    </tr></thead><tbody>
-                <tr>
-                        <th id="T_10d95_level0_row0" class="row_heading level0 row0" >0</th>
-                        <td id="T_10d95_row0_col0" class="data row0 col0" >100.00</td>
-                        <td id="T_10d95_row0_col1" class="data row0 col1" >164.00</td>
-            </tr>
-            <tr>
-                        <th id="T_10d95_level0_row1" class="row_heading level0 row1" >1</th>
-                        <td id="T_10d95_row1_col0" class="data row1 col0" >150.00</td>
-                        <td id="T_10d95_row1_col1" class="data row1 col1" >196.00</td>
-            </tr>
-            <tr>
-                        <th id="T_10d95_level0_row2" class="row_heading level0 row2" >2</th>
-                        <td id="T_10d95_row2_col0" class="data row2 col0" >200.00</td>
-                        <td id="T_10d95_row2_col1" class="data row2 col1" >275.00</td>
-            </tr>
-            <tr>
-                        <th id="T_10d95_level0_row3" class="row_heading level0 row3" >3</th>
-                        <td id="T_10d95_row3_col0" class="data row3 col0" >250.00</td>
-                        <td id="T_10d95_row3_col1" class="data row3 col1" >294.00</td>
-            </tr>
-            <tr>
-                        <th id="T_10d95_level0_row4" class="row_heading level0 row4" >4</th>
-                        <td id="T_10d95_row4_col0" class="data row4 col0" >300.00</td>
-                        <td id="T_10d95_row4_col1" class="data row4 col1" >354.00</td>
-            </tr>
-            <tr>
-                        <th id="T_10d95_level0_row5" class="row_heading level0 row5" >5</th>
-                        <td id="T_10d95_row5_col0" class="data row5 col0" >350.00</td>
-                        <td id="T_10d95_row5_col1" class="data row5 col1" >396.00</td>
-            </tr>
-            <tr>
-                        <th id="T_10d95_level0_row6" class="row_heading level0 row6" >6</th>
-                        <td id="T_10d95_row6_col0" class="data row6 col0" >400.00</td>
-                        <td id="T_10d95_row6_col1" class="data row6 col1" >481.00</td>
-            </tr>
-            <tr>
-                        <th id="T_10d95_level0_row7" class="row_heading level0 row7" >7</th>
-                        <td id="T_10d95_row7_col0" class="data row7 col0" >450.00</td>
-                        <td id="T_10d95_row7_col1" class="data row7 col1" >497.00</td>
-            </tr>
-            <tr>
-                        <th id="T_10d95_level0_row8" class="row_heading level0 row8" >8</th>
-                        <td id="T_10d95_row8_col0" class="data row8 col0" >500.00</td>
-                        <td id="T_10d95_row8_col1" class="data row8 col1" >558.00</td>
-            </tr>
-    </tbody></table></div></div>
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_e578a">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_e578a_level0_col0" class="col_heading level0 col0" >R(Ohm)</th>
+      <th id="T_e578a_level0_col1" class="col_heading level0 col1" >tau(micro s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_e578a_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_e578a_row0_col0" class="data row0 col0" >100.00</td>
+      <td id="T_e578a_row0_col1" class="data row0 col1" >164.00</td>
+    </tr>
+    <tr>
+      <th id="T_e578a_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_e578a_row1_col0" class="data row1 col0" >150.00</td>
+      <td id="T_e578a_row1_col1" class="data row1 col1" >196.00</td>
+    </tr>
+    <tr>
+      <th id="T_e578a_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_e578a_row2_col0" class="data row2 col0" >200.00</td>
+      <td id="T_e578a_row2_col1" class="data row2 col1" >275.00</td>
+    </tr>
+    <tr>
+      <th id="T_e578a_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_e578a_row3_col0" class="data row3 col0" >250.00</td>
+      <td id="T_e578a_row3_col1" class="data row3 col1" >294.00</td>
+    </tr>
+    <tr>
+      <th id="T_e578a_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_e578a_row4_col0" class="data row4 col0" >300.00</td>
+      <td id="T_e578a_row4_col1" class="data row4 col1" >354.00</td>
+    </tr>
+    <tr>
+      <th id="T_e578a_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_e578a_row5_col0" class="data row5 col0" >350.00</td>
+      <td id="T_e578a_row5_col1" class="data row5 col1" >396.00</td>
+    </tr>
+    <tr>
+      <th id="T_e578a_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_e578a_row6_col0" class="data row6 col0" >400.00</td>
+      <td id="T_e578a_row6_col1" class="data row6 col1" >481.00</td>
+    </tr>
+    <tr>
+      <th id="T_e578a_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_e578a_row7_col0" class="data row7 col0" >450.00</td>
+      <td id="T_e578a_row7_col1" class="data row7 col1" >497.00</td>
+    </tr>
+    <tr>
+      <th id="T_e578a_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_e578a_row8_col0" class="data row8 col0" >500.00</td>
+      <td id="T_e578a_row8_col1" class="data row8 col1" >558.00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 <p>Un bilan sur les sources d’incertitude amène aux conclusions suivantes :</p>
 <ul class="simple">
@@ -335,146 +514,30 @@
 <p><code class="docutils literal notranslate"><span class="pre">errorbar(x,</span> <span class="pre">y,</span> <span class="pre">xerr=inc_x,</span> <span class="pre">yerr=inc_y,</span> <span class="pre">options...)</span></code></p>
 </div>
 </div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Importation des bibliothèques&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="sd">&quot;&quot;&quot;Saisie des données&quot;&quot;&quot;</span>
-<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">500</span><span class="p">])</span>
-<span class="n">tau</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">164</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">275</span><span class="p">,</span> <span class="mi">294</span><span class="p">,</span> <span class="mi">354</span><span class="p">,</span> <span class="mi">396</span><span class="p">,</span> <span class="mi">481</span><span class="p">,</span> <span class="mi">497</span><span class="p">,</span> <span class="mi">558</span><span class="p">])</span>
-
-<span class="sd">&quot;&quot;&quot;Incertitude sur les valeurs&quot;&quot;&quot;</span>
-<span class="n">uR</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="mf">0.02</span>
-<span class="n">utau</span> <span class="o">=</span> <span class="n">tau</span> <span class="o">*</span> <span class="mf">0.05</span>
-
-<span class="sd">&quot;&quot;&quot;Création du graphique et analyse des points de mesure&quot;&quot;&quot;</span>
-<span class="n">f</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Détermination de C&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;R(Ohm)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;tau(micro s&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="n">uR</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">utau</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Points de mesure&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Les points sont plutôt alignés. C&#39;est encourageant pour l&#39;utilisation de la relation tau = RC&quot;</span><span class="p">)</span>
-</pre></div>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/exo_polyfit_3_0.png" src="../_images/exo_polyfit_3_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Les points sont plutôt alignés. C&#39;est encourageant pour l&#39;utilisation de la relation tau = RC
-</pre></div>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
-</div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Ajustement linéaire&quot;&quot;&quot;</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="n">tau_adj</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">R</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------------&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Droite d&#39;ajustement :&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tau = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;* R + &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Il faudrait arrondir en réfléchissant aux chiffres significatifs&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------------&quot;</span><span class="p">)</span>
-
-
-<span class="sd">&quot;&quot;&quot;Création du graphique et analyse des points de mesure&quot;&quot;&quot;</span>
-<span class="n">f</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Détermination de C&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;R(Ohm)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;tau(micro s&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">tau_adj</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ajustement&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="n">uR</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">utau</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Points de mesure&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La droite passe globalement par les croix d&#39;incertitude à part les points 2 et 3 pour lesquels il faudrait approfondir l&#39;analyse.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------
-Droite d&#39;ajustement :
-tau = 0.9976666666666668* R + 57.922222222222
-Il faudrait arrondir en réfléchissant aux chiffres significatifs
-----------------
-</pre></div>
-</div>
-<img alt="../_images/exo_polyfit_4_1.png" src="../_images/exo_polyfit_4_1.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La droite passe globalement par les croix d&#39;incertitude à part les points 2 et 3 pour lesquels il faudrait approfondir l&#39;analyse.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Détermination de C par régression linéaire&quot;&quot;&quot;</span>
-<span class="n">C</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e-6</span>  <span class="c1"># Passage en secondes pour tau.</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------------&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimation de C :&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; F&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Il faudrait arrondir en réfléchissant aux chiffres significatifs.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------------&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------
-Estimation de C :
-C = 9.976666666666668e-07 F
-Il faudrait arrondir en réfléchissant aux chiffres significatifs.
-----------------
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Détermination de C par moyenne des rapports&quot;&quot;&quot;</span>
-<span class="n">C_s</span> <span class="o">=</span> <span class="n">tau</span> <span class="o">/</span> <span class="n">R</span> <span class="o">*</span> <span class="mf">1e-6</span>  <span class="c1"># Calcul des C pour chaque valeur de R</span>
-<span class="n">C2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">C_s</span><span class="p">)</span>  <span class="c1"># Calcul de la moyenne</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------------&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimation de C par moyenne des rapports :&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">C2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; F&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Il faudrait arrondir en réfléchissant aux chiffres significatifs.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------------&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------
-Estimation de C par moyenne des rapports :
-C = 1.2480044091710756e-06 F
-Il faudrait arrondir en réfléchissant aux chiffres significatifs.
-----------------
-</pre></div>
-</div>
-</div>
-</div>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header">
-Commentaire sur les valeurs trouvées.<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<p class="card-text">Vous devriez trouver le même ordre de grandeur mais pas la même valeur (plus de 20% d’écart tout de même). Cela peut s’expliquer par :</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Commentaire sur les valeurs trouvées.<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Vous devriez trouver le même ordre de grandeur mais pas la même valeur (plus de 20% d’écart tout de même). Cela peut s’expliquer par :</p>
 <ul class="simple">
-<li><p class="card-text">les incertitudes qui, si on les estime sont relativement grandes</p></li>
-<li><p class="card-text">un biais dans les mesures : l’ordonnée à l’origine devrait être nulle or la régression linéaire donne une valeur relativement importante (jusqu’à 30% des valeurs mesurées). Le modèle est donc plutôt affine et non linéaire. La méthode des rapports <span class="math notranslate nohighlight">\(\tau/R\)</span> n’est donc peut-être pas adaptée. C’est l’avantage de la régression linéaire qui permet de tenir compte d’un possible biais dans les mesures.</p></li>
+<li><p class="sd-card-text">les incertitudes qui, si on les estime sont relativement grandes</p></li>
+<li><p class="sd-card-text">un biais dans les mesures : l’ordonnée à l’origine devrait être nulle or la régression linéaire donne une valeur relativement importante (jusqu’à 30% des valeurs mesurées). Le modèle est donc plutôt affine et non linéaire. La méthode des rapports <span class="math notranslate nohighlight">\(\tau/R\)</span> n’est donc peut-être pas adaptée. C’est l’avantage de la régression linéaire qui permet de tenir compte d’un possible biais dans les mesures.</p></li>
 </ul>
 </div>
 </details></div>
 <div class="section" id="utiliser-un-modele-ajuste">
-<h2><span class="section-number">3.2. </span>Utiliser un modèle ajusté<a class="headerlink" href="#utiliser-un-modele-ajuste" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2. </span>Utiliser un modèle ajusté<a class="headerlink" href="#utiliser-un-modele-ajuste" title="Permalink to this headline">#</a></h2>
 <p>On veut mesurer la concentration de l’additif alimentaire E131 (bleu patenté) dans des bonbons gélifiées. On réalise pour cela un dosage par absorbance, c’est-à-dire qu’on va mesurer l’absorbance <span class="math notranslate nohighlight">\(A_{640nm}\)</span> à la longueur d’onde <span class="math notranslate nohighlight">\(640nm\)</span> de plusieurs solutions contenant du bleu de patenté à des concentrations connues <span class="math notranslate nohighlight">\(C_i\)</span>. En mesurant ensuite l’absorbance d’une solution contenant un bonbon gélifié bleu dissous, on déterminera sa concentration.</p>
 <blockquote>
 <div><p><strong>Fabrication des solutions étalons :</strong></p>
@@ -496,34 +559,45 @@ Commentaire sur les valeurs trouvées.<div class="summary-down docutils">
 <p>On donne les données mesurées :</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><style  type="text/css" >
-</style><table id="T_1e754_" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >Vi(mL)</th>        <th class="col_heading level0 col1" >A(SI)</th>    </tr></thead><tbody>
-                <tr>
-                        <th id="T_1e754_level0_row0" class="row_heading level0 row0" >0</th>
-                        <td id="T_1e754_row0_col0" class="data row0 col0" >1.00</td>
-                        <td id="T_1e754_row0_col1" class="data row0 col1" >0.13</td>
-            </tr>
-            <tr>
-                        <th id="T_1e754_level0_row1" class="row_heading level0 row1" >1</th>
-                        <td id="T_1e754_row1_col0" class="data row1 col0" >2.50</td>
-                        <td id="T_1e754_row1_col1" class="data row1 col1" >0.43</td>
-            </tr>
-            <tr>
-                        <th id="T_1e754_level0_row2" class="row_heading level0 row2" >2</th>
-                        <td id="T_1e754_row2_col0" class="data row2 col0" >5.00</td>
-                        <td id="T_1e754_row2_col1" class="data row2 col1" >0.83</td>
-            </tr>
-            <tr>
-                        <th id="T_1e754_level0_row3" class="row_heading level0 row3" >3</th>
-                        <td id="T_1e754_row3_col0" class="data row3 col0" >7.50</td>
-                        <td id="T_1e754_row3_col1" class="data row3 col1" >1.27</td>
-            </tr>
-            <tr>
-                        <th id="T_1e754_level0_row4" class="row_heading level0 row4" >4</th>
-                        <td id="T_1e754_row4_col0" class="data row4 col0" >10.00</td>
-                        <td id="T_1e754_row4_col1" class="data row4 col1" >1.76</td>
-            </tr>
-    </tbody></table></div></div>
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_5d1cc">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_5d1cc_level0_col0" class="col_heading level0 col0" >Vi(mL)</th>
+      <th id="T_5d1cc_level0_col1" class="col_heading level0 col1" >A(SI)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_5d1cc_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_5d1cc_row0_col0" class="data row0 col0" >1.00</td>
+      <td id="T_5d1cc_row0_col1" class="data row0 col1" >0.13</td>
+    </tr>
+    <tr>
+      <th id="T_5d1cc_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_5d1cc_row1_col0" class="data row1 col0" >2.50</td>
+      <td id="T_5d1cc_row1_col1" class="data row1 col1" >0.43</td>
+    </tr>
+    <tr>
+      <th id="T_5d1cc_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_5d1cc_row2_col0" class="data row2 col0" >5.00</td>
+      <td id="T_5d1cc_row2_col1" class="data row2 col1" >0.83</td>
+    </tr>
+    <tr>
+      <th id="T_5d1cc_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_5d1cc_row3_col0" class="data row3 col0" >7.50</td>
+      <td id="T_5d1cc_row3_col1" class="data row3 col1" >1.27</td>
+    </tr>
+    <tr>
+      <th id="T_5d1cc_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_5d1cc_row4_col0" class="data row4 col0" >10.00</td>
+      <td id="T_5d1cc_row4_col1" class="data row4 col1" >1.76</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 <div class="admonition-dosage-par-absorbance admonition">
 <p class="admonition-title">Dosage par absorbance</p>
@@ -539,111 +613,11 @@ Commentaire sur les valeurs trouvées.<div class="summary-down docutils">
 <p>Le nombre de bonbon trouvé ne tient pas compte de la quantité de sucre ingurgitée…</p>
 </div>
 </div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">Vi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.50</span><span class="p">,</span> <span class="mf">5.00</span><span class="p">,</span> <span class="mf">7.50</span><span class="p">,</span> <span class="mf">10.00</span><span class="p">])</span>
-<span class="n">Ai</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.128</span><span class="p">,</span> <span class="mf">0.428</span><span class="p">,</span> <span class="mf">0.833</span><span class="p">,</span> <span class="mf">1.267</span><span class="p">,</span> <span class="mf">1.765</span><span class="p">])</span>
-
-<span class="n">Vt</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># V_T en mL</span>
-<span class="n">C0</span> <span class="o">=</span> <span class="mf">2.04</span>  <span class="c1"># On n&#39;introduit pas la puissance 10^-5</span>
-<span class="n">u1</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># Incertitude sur les volumes en mL</span>
-
-<span class="sd">&quot;&quot;&quot;Calcul des Ci et uCi. On utilise la vectorialisation des vecteurs numpy&quot;&quot;&quot;</span>
-<span class="n">Ci</span> <span class="o">=</span> <span class="n">C0</span> <span class="o">*</span> <span class="n">Vi</span> <span class="o">/</span> <span class="n">Vt</span>  <span class="c1"># Calcul des Ci, on n&#39;introduit pas la puissance 10^-5</span>
-<span class="n">uCi</span> <span class="o">=</span> <span class="n">C0</span> <span class="o">*</span> <span class="n">u1</span> <span class="o">/</span> <span class="n">Vt</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">Ci</span> <span class="o">/</span> <span class="n">C0</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Calcul des uCi</span>
-
-
-<span class="sd">&quot;&quot;&quot;Tracé des points de mesures&quot;&quot;&quot;</span>
-<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Dosage par absorbance&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Absorbance à 640nm (SI)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Concentration (10^-5 mol/L)&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">Ai</span><span class="p">,</span> <span class="n">Ci</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">uCi</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Points de mesure&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># A commenter si on veut afficher le graphique suivant.</span>
-</pre></div>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/exo_polyfit_10_0.png" src="../_images/exo_polyfit_10_0.png" />
-</div>
-</div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le tracé précédent rend l&#39;hypothèse linéaire possible.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;On réalise donc l&#39;ajustement.&quot;</span><span class="p">)</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">Ai</span><span class="p">,</span> <span class="n">Ci</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Réalisation de l&#39;ajustement affine</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-------------------&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le modèle ajusté a pour équation :&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; * A + &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Il faudra bien sûr réfléchir au nombre de chiffres significatifs à garder&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-------------------&quot;</span><span class="p">)</span>
-
-<span class="n">Ci_adj</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">Ai</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># On calcule les valeurs ajustées des concentrations.</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ai</span><span class="p">,</span> <span class="n">Ci_adj</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Modèle ajusté&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>  <span class="c1"># Il faut réafficher la légende car on l&#39;a modifiée</span>
-
-
-<span class="n">f</span>  <span class="c1"># Inutile sauf avec un notebook Jupyter</span>
-<span class="c1"># plt.show() A décommenter si on n&#39;utiliser pas Jupyter</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Le tracé précédent rend l&#39;hypothèse linéaire possible.
-On réalise donc l&#39;ajustement.
--------------------
-Le modèle ajusté a pour équation :
-1.139855247404751 * A + 0.05293999024471903
-Il faudra bien sûr réfléchir au nombre de chiffres significatifs à garder
--------------------
-</pre></div>
-</div>
-<img alt="../_images/exo_polyfit_11_1.png" src="../_images/exo_polyfit_11_1.png" />
-</div>
-</div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Le modèle étant plutôt cohérent avec les points de mesures, on va l&#39;utiliser pour évaluer Cf&quot;&quot;&quot;</span>
-<span class="n">Af</span> <span class="o">=</span> <span class="mf">0.665</span>
-<span class="n">Cf</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">Af</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Concentration en bleu patenté dans la solution diluée</span>
-
-<span class="n">Vf</span> <span class="o">=</span> <span class="mf">50e-3</span>  <span class="c1"># Volume de la solution diluée (en L)</span>
-<span class="n">M</span> <span class="o">=</span> <span class="mf">582.66e-3</span>  <span class="c1"># Masse molaire du bleu patenté (en kg)</span>
-<span class="sd">&quot;&quot;&quot;Pour calculer la masse, on oublier la puissance 10^-5 dans la concentration&quot;&quot;&quot;</span>
-<span class="n">mf</span> <span class="o">=</span> <span class="n">Cf</span> <span class="o">*</span> <span class="mf">1e-5</span> <span class="o">*</span> <span class="n">Vf</span> <span class="o">*</span> <span class="n">M</span>  <span class="c1"># Calcul de la masse de bleu patenté dans un bonbon (en kg)</span>
-
-
-<span class="n">Mh</span> <span class="o">=</span> <span class="mi">70</span>  <span class="c1"># On choisit un humain de 70kg</span>
-<span class="n">m_DJA</span> <span class="o">=</span> <span class="mf">2.5e-6</span>  <span class="c1"># DJA donnée par l&#39;énoncé</span>
-<span class="n">m_max</span> <span class="o">=</span> <span class="n">Mh</span> <span class="o">*</span> <span class="n">m_DJA</span>  <span class="c1"># Masse maximale de bleu patenté qu&#39;on peut ingérer</span>
-<span class="n">N_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">m_max</span> <span class="o">/</span> <span class="n">mf</span><span class="p">)</span>  <span class="c1"># Arrondi à l&#39;entier supérieur</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le nombre maximal de bonbons qu&#39;on peut manger est :&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">N_max</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------
-Le nombre maximal de bonbons qu&#39;on peut manger est :
-741.0
----------------
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
 </div>
 </div>
@@ -670,34 +644,48 @@ Le nombre maximal de bonbons qu&#39;on peut manger est :
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="exo_science.html" title="previous page"><span class="section-number">2. </span>S’entraîner.</a>
-    <a class='right-next' id="next-link" href="exo_science_2.html" title="next page"><span class="section-number">4. </span>S’entraîner (Import et tirages aléatoires)</a>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="exo_science.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>S’entraîner.</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="exo_science_2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>S’entraîner (Import et tirages aléatoires)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Capacités numériques<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Capacités numériques<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>

@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>4. S’entraîner (Import et tirages aléatoires) &#8212; Python : Bases à connaître - Exercice</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +19,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://pcsi3physiquestan.github.io/intro_python_td/notebook/exo_science_2.html" />
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -58,10 +58,27 @@
     <link rel="next" title="5. Comprendre ses erreurs" href="complement.html" />
     <link rel="prev" title="3. S’entraîner (Régression linéaire)" href="exo_polyfit.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -70,10 +87,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">Python : Bases à connaître - Exercice</h1>
@@ -82,16 +101,17 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro_python.html">
-   Eléments de bases pour programmer en Python
-  </a>
- </li>
-</ul>
-<p class="caption">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro_python.html">
+                    Eléments de bases pour programmer en Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Réviser les bases
  </span>
@@ -103,7 +123,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Bilbiothèques scientifiques
  </span>
@@ -115,7 +135,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Plus loin avec numpy
  </span>
@@ -132,7 +152,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Compléments
  </span>
@@ -146,97 +166,217 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  <a href="https://stanislas.edunao.com">Plateforme Moodle</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../_sources/notebook/exo_science_2.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebook/exo_science_2.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pcsi3physiquestan/intro_python_td_source/main?urlpath=tree/notebook/exo_science_2.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            <a href="https://stanislas.edunao.com">Plateforme Moodle</a>
             </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pcsi3physiquestan/intro_python_td_source/main?urlpath=tree/notebook/exo_science_2.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/pcsi3physiquestan/intro_python_td_source/blob/main/notebook/exo_science_2.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebook/exo_science_2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/notebook/exo_science_2.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#utilisation-de-numpy-random">
    4.1. Utilisation de numpy.random
@@ -259,17 +399,55 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>S’entraîner (Import et tirages aléatoires)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#utilisation-de-numpy-random">
+   4.1. Utilisation de numpy.random
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#etude-de-donnees-experimentales">
+   4.2. Etude de données expérimentales
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experiences-multiples">
+   4.3. Expériences multiples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#celerite-des-ultrasons">
+   4.4. Célérité des ultrasons
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="s-entrainer-import-et-tirages-aleatoires">
-<h1><span class="section-number">4. </span>S’entraîner (Import et tirages aléatoires)<a class="headerlink" href="#s-entrainer-import-et-tirages-aleatoires" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="s-entrainer-import-et-tirages-aleatoires">
+<h1><span class="section-number">4. </span>S’entraîner (Import et tirages aléatoires)<a class="headerlink" href="#s-entrainer-import-et-tirages-aleatoires" title="Permalink to this headline">#</a></h1>
 <p>La partie donnant les concepts pour faire ces exercices est <a class="reference external" href="https://pcsi3physiquestan.github.io/intro_python/notebook/import_file.html">accessible ici</a>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -277,7 +455,7 @@
 <p>Vous devrez ensuite réfléchir au chemin relatif à utiliser dans vos scripts pour importer les données expérimentales de ces fichiers.</p>
 </div>
 <div class="section" id="utilisation-de-numpy-random">
-<h2><span class="section-number">4.1. </span>Utilisation de numpy.random<a class="headerlink" href="#utilisation-de-numpy-random" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.1. </span>Utilisation de numpy.random<a class="headerlink" href="#utilisation-de-numpy-random" title="Permalink to this headline">#</a></h2>
 <div class="tip admonition">
 <p class="admonition-title">Utilisation de numpy.random</p>
 <p>Vous devez :</p>
@@ -288,49 +466,24 @@
 <li><p>Tracer l’histogramme des valeurs de X. Le titre sera “Distribution statistique”, il n’est pas utile d’afficher la légende.</p></li>
 </ol>
 </div>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header">
-Quelques indices pour s’organiser<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Quelques indices pour s’organiser<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
-<li><p class="card-text">Vous avez besoin des autres bibliothèques scientifiques en plus de <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>. N’oubliez pas de les importer aussi.</p></li>
-<li><p class="card-text">Bien comprendre le fonctionnement de <code class="docutils literal notranslate"><span class="pre">uniform</span></code> pour l’utiliser.</p></li>
+<li><p class="sd-card-text">Vous avez besoin des autres bibliothèques scientifiques en plus de <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>. N’oubliez pas de les importer aussi.</p></li>
+<li><p class="sd-card-text">Bien comprendre le fonctionnement de <code class="docutils literal notranslate"><span class="pre">uniform</span></code> pour l’utiliser.</p></li>
 </ul>
 </div>
 </details><p>Vous devriez obtenir le graphique suivant (Cliquez sur la croix. Cela peut <strong>un peu</strong> varier puisqu’on fait des tirages aléatoires) :</p>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>  <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="nn">rd</span>
-
-<span class="n">N</span> <span class="o">=</span> <span class="mi">1000000</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
-
-<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Distribution statistique&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Valeurs accessibles&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Fréquences&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;rice&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/exo_science_2_2_0.png" src="../_images/exo_science_2_2_0.png" />
-</div>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
 </div>
 <div class="section" id="etude-de-donnees-experimentales">
-<h2><span class="section-number">4.2. </span>Etude de données expérimentales<a class="headerlink" href="#etude-de-donnees-experimentales" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2. </span>Etude de données expérimentales<a class="headerlink" href="#etude-de-donnees-experimentales" title="Permalink to this headline">#</a></h2>
 <div class="tip admonition">
 <p class="admonition-title">Etude de données expérimentales</p>
 <p>On étudie un circuit RC en régime libre. On a pris <span class="math notranslate nohighlight">\(R = 100k\Omega\)</span> et on veut mesurer la capacité <span class="math notranslate nohighlight">\(C\)</span> grâce aux données expérimentales. Les données sont fournies dans le fichier <code class="docutils literal notranslate"><span class="pre">circuit_rc_decharge.dat</span></code> accessible par <a class="reference external" href="https://github.com/pcsi3physiquestan/donnees_exp/blob/main/circuit_rc.dat?raw=true">ce lien</a>.</p>
@@ -361,76 +514,21 @@ u_c(t) = U_0 \exp(-\frac{t}{\tau})
 <li><p>Représenter, sur un graphique légendé et titré la courbe <span class="math notranslate nohighlight">\(u_c(t)\)</span>. L’allure est-elle conforme (visuellement) aux attentes théoriques ?</p></li>
 <li><p>En utilisant les informations données dans l’énoncé, écrire une fonction <code class="docutils literal notranslate"><span class="pre">estime_tau</span></code> qui prend en argument deux vecteurs numpy <code class="docutils literal notranslate"><span class="pre">t</span></code> et <code class="docutils literal notranslate"><span class="pre">u</span></code> et qui estime le temps <code class="docutils literal notranslate"><span class="pre">tau</span></code>. On admettra que <span class="math notranslate nohighlight">\(u(t)\)</span> est bien décroissante et on pourra prendre la première valeur de <span class="math notranslate nohighlight">\(u\)</span> comme valeur de <span class="math notranslate nohighlight">\(U_0\)</span>. Utiliser cette fonction pour obtenir une estimation de <span class="math notranslate nohighlight">\(\tau\)</span> puis de <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
 </ol>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header">
-Valeur constructeur<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<p class="card-text">La valeur annoncée par le constructeur est <span class="math notranslate nohighlight">\(C = 0.1 \mu F\)</span> mais en l’absence d’étude plus complète sur les incertitudes de mesure, on ne peut décider si la valeur que vous avez estimée est cohérente. Vous trouverez ci-dessous les valeurs à trouver (cliquer sur la croix).</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Valeur constructeur<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">La valeur annoncée par le constructeur est <span class="math notranslate nohighlight">\(C = 0.1 \mu F\)</span> mais en l’absence d’étude plus complète sur les incertitudes de mesure, on ne peut décider si la valeur que vous avez estimée est cohérente. Vous trouverez ci-dessous les valeurs à trouver (cliquer sur la croix).</p>
 </div>
 </details></div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Les libraires ont déjà été importées à l&#39;exercice précédent&quot;&quot;&quot;</span>
-<span class="n">temps</span><span class="p">,</span> <span class="n">ucb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;Sf6/circuit_rc.dat&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Importation des données</span>
-
-<span class="k">def</span> <span class="nf">bin_to_volt</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
-	<span class="sd">&quot;&quot;&quot;Fonction qui transforme une valeur 0-255 en valeur de tension.&quot;&quot;&quot;</span>
-	<span class="n">B_MAX</span> <span class="o">=</span> <span class="mi">1023</span>
-	<span class="n">U_MAX</span> <span class="o">=</span> <span class="mi">5</span>
-	<span class="n">B_MIN</span> <span class="o">=</span> <span class="mi">0</span>
-	<span class="n">U_MIN</span> <span class="o">=</span> <span class="mi">0</span>
-	<span class="n">tension</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span> <span class="o">-</span> <span class="n">B_MIN</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">B_MAX</span> <span class="o">-</span> <span class="n">B_MIN</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">U_MAX</span> <span class="o">-</span> <span class="n">U_MIN</span><span class="p">)</span> <span class="o">+</span> <span class="n">U_MIN</span>
-	<span class="k">return</span> <span class="n">tension</span>
-
-<span class="n">uc</span> <span class="o">=</span> <span class="n">bin_to_volt</span><span class="p">(</span><span class="n">ucb</span><span class="p">)</span>
-
-
-<span class="sd">&quot;&quot;&quot;Tracé de uc(t)&quot;&quot;&quot;</span>
-<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Etude de la décharge d&#39;un RC&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t(microsecondes)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;uc(V)&#39;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temps</span><span class="p">,</span> <span class="n">uc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;uc(t)&#39;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="sd">&quot;&quot;&quot;Détermination de tau&quot;&quot;&quot;</span>
-<span class="n">U0</span> <span class="o">=</span> <span class="n">uc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Tension initiale</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">while</span> <span class="n">uc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.37</span> <span class="o">*</span> <span class="n">U0</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">uc</span><span class="p">):</span>  <span class="c1"># Test des 37%</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">temps</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>  <span class="c1"># Temps juste avant d&#39;invalider la condition</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">temps</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># Temps juste après invalidation</span>
-
-<span class="n">tau</span> <span class="o">=</span> <span class="p">(</span><span class="n">temps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">temps</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># On prend la moyenne des deux</span>
-<span class="n">R</span> <span class="o">=</span> <span class="mf">1e5</span>  <span class="c1"># Valeur de R</span>
-<span class="n">C</span> <span class="o">=</span> <span class="n">tau</span> <span class="o">/</span> <span class="n">R</span> <span class="o">/</span> <span class="mf">1e6</span>  <span class="c1"># (tau était en microsecondes)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valeur estimée de tau :&quot;</span><span class="p">,</span> <span class="n">tau</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valeur estimée de C :&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tous les chiffres ne sont pas forcément significatifs...&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/exo_science_2_4_0.png" src="../_images/exo_science_2_4_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10700.0
-11000.0
-Valeur estimée de tau : 10850.0
-Valeur estimée de C : 1.085e-07
-Tous les chiffres ne sont pas forcément significatifs...
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
 </div>
 <div class="section" id="experiences-multiples">
-<h2><span class="section-number">4.3. </span>Expériences multiples<a class="headerlink" href="#experiences-multiples" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3. </span>Expériences multiples<a class="headerlink" href="#experiences-multiples" title="Permalink to this headline">#</a></h2>
 <div class="tip admonition">
 <p class="admonition-title">Expériences multiples</p>
 <p>On reprend l’exemple précédent (même valeurs de R et C) mais cette fois le montage réalisé au moyen d’un microcontrolleur Arduino a permis d’automatiser la mesure de la constante <span class="math notranslate nohighlight">\(\tau\)</span>. On a ainsi réalisé <span class="math notranslate nohighlight">\(N\)</span> décharges de C et le microcontrolleur a été programmé pour mesurer à chaque fois <span class="math notranslate nohighlight">\(\tau\)</span> et le transmettre à l’ordinateur. Un programme non présenté ici a stocké les valeurs de <span class="math notranslate nohighlight">\(\tau\)</span> dans un fichier accessible à <a class="reference external" href="https://github.com/pcsi3physiquestan/donnees_exp/blob/main/circuit_rc_auto.dat?raw=true">ce lien</a>.</p>
@@ -445,52 +543,11 @@ Tous les chiffres ne sont pas forcément significatifs...
 <li><p>Utiliser les fonctions de numpy pour estimer la valeur moyennes des mesures de <span class="math notranslate nohighlight">\(\tau\)</span> ainsi que l’écart-type des mesures. Utiliser la valeur moyenne de <span class="math notranslate nohighlight">\(\tau\)</span> pour obtenir une estimation de la capacitance <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
 </ol>
 </div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">taus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;Sf6/circuit_rc_auto.dat&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>  <span class="c1"># Importation des données</span>
-
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nombre de mesures :&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">taus</span><span class="p">))</span>
-
-<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Etude de la décharge d&#39;un RC&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;tau(microsecondes)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Fréquence&#39;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">taus</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="sd">&quot;&quot;&quot;Calcul de la moyenne et écart-type&quot;&quot;&quot;</span>
-<span class="n">tau_m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">taus</span><span class="p">)</span>
-<span class="n">tau_u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">taus</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tau moyen : &quot;</span><span class="p">,</span> <span class="n">tau_m</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ecart-type : &quot;</span><span class="p">,</span> <span class="n">tau_u</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tous les chiffres ne sont pas forcément significatifs...&quot;</span><span class="p">)</span>
-
-<span class="n">R</span> <span class="o">=</span> <span class="mf">1e5</span>  <span class="c1"># Valeur de R</span>
-<span class="n">C</span> <span class="o">=</span> <span class="n">tau_m</span> <span class="o">/</span> <span class="n">R</span> <span class="o">/</span> <span class="mf">1e6</span>  <span class="c1"># (tau était en microsecondes)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valeur estimée de C :&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nombre de mesures : 1000
-</pre></div>
-</div>
-<img alt="../_images/exo_science_2_6_1.png" src="../_images/exo_science_2_6_1.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tau moyen :  9985.208
-Ecart-type :  27.001144379410995
-Tous les chiffres ne sont pas forcément significatifs...
-Valeur estimée de C : 9.985208000000001e-08
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
 </div>
 <div class="section" id="celerite-des-ultrasons">
-<h2><span class="section-number">4.4. </span>Célérité des ultrasons<a class="headerlink" href="#celerite-des-ultrasons" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.4. </span>Célérité des ultrasons<a class="headerlink" href="#celerite-des-ultrasons" title="Permalink to this headline">#</a></h2>
 <p>Cet exercice est un peu plus complet. Veillez à bien comprendre ce qui a été fait précédemment.</p>
 <div class="tip admonition">
 <p class="admonition-title">Célérité des ultrasons</p>
@@ -522,98 +579,11 @@ Valeur estimée de C : 9.985208000000001e-08
 <li><p>L’option <code class="docutils literal notranslate"><span class="pre">label</span></code> ne prend comme argument qu’une chaine de caractère. Vous pouvez transformer un flottant ou un entier en chaine de caractère <code class="docutils literal notranslate"><span class="pre">x</span></code> par <code class="docutils literal notranslate"><span class="pre">str(x)</span></code>. Vous pouvez aussi concaténer cette chain avec d’autres : <code class="docutils literal notranslate"><span class="pre">str(x)</span> <span class="pre">+</span> <span class="pre">&quot;</span> <span class="pre">cm&quot;</span></code>.</p></li>
 </ul>
 </div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">donnees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;Sf6/vitesse_son_2.dat&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-<span class="n">distances</span> <span class="o">=</span> <span class="n">donnees</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Récupération des distances.</span>
-
-<span class="sd">&quot;&quot;&quot;Tracé des histogrammes&quot;&quot;&quot;</span>
-<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Analyse des données expérimentales&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Temps de vol (microssec)&quot;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">donnees</span><span class="p">:</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Distance d&#39;étude</span>
-    <span class="n">tps</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># Les temps de vol</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">tps</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;rice&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;d = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; cm&quot;</span><span class="p">)</span>  <span class="c1"># Tracé de l&#39;histogramme. Observer l&#39;ajout de la légende.</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/exo_science_2_8_0.png" src="../_images/exo_science_2_8_0.png" />
-</div>
-</div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">selection</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fonction qui sélectionne les valeurs acceptables du vecteur u&quot;&quot;&quot;</span>
-    <span class="n">um</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>  <span class="c1"># Calcul de la moyenne</span>
-    <span class="n">uu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Calcul de l&#39;écart-type</span>
-
-    <span class="sd">&quot;&quot;&quot;Important : On ne connait pas quelle va être la taille de u_sel.</span>
-<span class="sd">    L&#39;usage d&#39;un vecteur numpy est donc déconseillé. On va créer une liste classique</span>
-<span class="sd">    qu&#39;on transformera à la fin en vecteur numpy.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">u_sel</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Liste où l&#39;on va stocker les valeurs sélectionnées.</span>
-    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">u</span><span class="p">:</span>  <span class="c1"># On parcourt les valeurs de la liste.</span>
-        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">val</span> <span class="o">-</span> <span class="n">um</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">uu</span><span class="p">:</span>  <span class="c1"># Test d&#39;écart à la valeur moyenne</span>
-            <span class="n">u_sel</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>  <span class="c1"># On ajoute la valeur</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">u_sel</span><span class="p">)</span>  <span class="c1"># On transforme u_sel en vecteur numpy</span>
-
-
-<span class="sd">&quot;&quot;&quot;Détermination des valeurs de c&quot;&quot;&quot;</span>
-<span class="n">cs</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Liste pour les célérités</span>
-<span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">donnees</span><span class="p">:</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Distance</span>
-    <span class="n">t_sel</span> <span class="o">=</span> <span class="n">selection</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>  <span class="c1"># Sélection des valeurs acceptables</span>
-    <span class="n">t_moy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">t_sel</span><span class="p">)</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">d</span> <span class="o">/</span> <span class="n">t_moy</span>
-    <span class="n">cs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-
-<span class="n">cs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1000000</span>  <span class="c1"># On passe à des m/s</span>
-
-<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Valeurs de célérité estimée&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;d(cm)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;c(m/s)&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">cs</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Célérité&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>  <span class="c1"># On ne relie pas les points.</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;On observe des valeurs entre 345m/s et 350m/s soit des valeurs peu dispersées.&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Pensez à commenter le précédent plt.show()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On observe des valeurs entre 345m/s et 350m/s soit des valeurs peu dispersées.
-</pre></div>
-</div>
-<img alt="../_images/exo_science_2_9_1.png" src="../_images/exo_science_2_9_1.png" />
-</div>
-</div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">celerite</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valeur estimée de la célérité :&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">celerite</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;m/s&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------
-Valeur estimée de la célérité :
-346.3315935386808m/s
----------
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
 </div>
 </div>
@@ -640,34 +610,48 @@ Valeur estimée de la célérité :
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="exo_polyfit.html" title="previous page"><span class="section-number">3. </span>S’entraîner (Régression linéaire)</a>
-    <a class='right-next' id="next-link" href="complement.html" title="next page"><span class="section-number">5. </span>Comprendre ses erreurs</a>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="exo_polyfit.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>S’entraîner (Régression linéaire)</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="complement.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Comprendre ses erreurs</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Capacités numériques<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Capacités numériques<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>
