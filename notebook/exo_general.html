@@ -537,7 +537,31 @@ title="Print to PDF"
 </ol>
 <p>Tester ensuite votre fonction en affichant son retour pour <span class="math notranslate nohighlight">\(n = 0, 1, 2, 5\)</span> et <span class="math notranslate nohighlight">\(100\)</span>. Les résultats pour ces valeurs sont donnés ci-dessous (cliquez sur la croix).</p>
 </div>
-<div class="cell tag_remove-input tag_remove-output docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">somme_entier</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="n">i</span>
+  <span class="k">return</span> <span class="n">s</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=0 : &quot;</span><span class="p">,</span> <span class="n">somme_entier</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=1 : &quot;</span><span class="p">,</span> <span class="n">somme_entier</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=2 : &quot;</span><span class="p">,</span> <span class="n">somme_entier</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=5 : &quot;</span><span class="p">,</span> <span class="n">somme_entier</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=100 : &quot;</span><span class="p">,</span> <span class="n">somme_entier</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n=0 :  0
+n=1 :  1
+n=2 :  3
+n=5 :  15
+n=100 :  5050
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="choix-d-une-boucle">
@@ -551,7 +575,33 @@ title="Print to PDF"
 </ol>
 <p>Tester ensuite votre fonction en affichant son retour pour <span class="math notranslate nohighlight">\(n = 0, 2, 5, 100\)</span> et <span class="math notranslate nohighlight">\(2000\)</span>. Les résultats pour ces valeurs sont donnés ci-dessous (cliquez sur la croix).</p>
 </div>
-<div class="cell tag_remove-input tag_remove-output docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">somme_ks</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">while</span> <span class="n">i</span> <span class="o">+</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">i</span><span class="o">**</span><span class="mi">3</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="n">i</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+  <span class="k">return</span> <span class="n">s</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=0 : &quot;</span><span class="p">,</span> <span class="n">somme_ks</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=2 : &quot;</span><span class="p">,</span> <span class="n">somme_ks</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=5 : &quot;</span><span class="p">,</span> <span class="n">somme_ks</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=100 : &quot;</span><span class="p">,</span> <span class="n">somme_ks</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=2000 : &quot;</span><span class="p">,</span> <span class="n">somme_ks</span><span class="p">(</span><span class="mi">2000</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n=0 :  0
+n=2 :  0
+n=5 :  1
+n=100 :  10
+n=2000 :  78
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="diviseurs">
@@ -561,7 +611,33 @@ title="Print to PDF"
 <p>Ecrire une fonction <code class="docutils literal notranslate"><span class="pre">getDiv</span></code> qui prend un nombre entier <code class="docutils literal notranslate"><span class="pre">n</span></code> non nul et qui renvoie tous les diviseurs (même non premiers) de ce nombre sous forme de liste.</p>
 <p>Tester ensuite votre fonction en affichant son retour pour <span class="math notranslate nohighlight">\(n = 1, 4, 24, 47\)</span> et <span class="math notranslate nohighlight">\(254\)</span>. Les résultats pour ces valeurs sont donnés ci-dessous (cliquez sur la croix).</p>
 </div>
-<div class="cell tag_remove-input tag_remove-output docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getDiv</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># Fonction qui renvoir tout les diviseurs d&#39;un nombre n.</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">L</span> <span class="o">+=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">L</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=1 : &quot;</span><span class="p">,</span> <span class="n">getDiv</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=4 : &quot;</span><span class="p">,</span> <span class="n">getDiv</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=24 : &quot;</span><span class="p">,</span> <span class="n">getDiv</span><span class="p">(</span><span class="mi">24</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=47: &quot;</span><span class="p">,</span> <span class="n">getDiv</span><span class="p">(</span><span class="mi">47</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=254 : &quot;</span><span class="p">,</span> <span class="n">getDiv</span><span class="p">(</span><span class="mi">254</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n=1 :  [1]
+n=4 :  [1, 2, 4]
+n=24 :  [1, 2, 3, 4, 6, 8, 12, 24]
+n=47:  [1, 47]
+n=254 :  [1, 2, 127, 254]
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>

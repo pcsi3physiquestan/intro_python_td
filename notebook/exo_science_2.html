@@ -479,7 +479,32 @@ Quelques indices pour s’organiser<div class="sd-summary-down docutils">
 </ul>
 </div>
 </details><p>Vous devriez obtenir le graphique suivant (Cliquez sur la croix. Cela peut <strong>un peu</strong> varier puisqu’on fait des tirages aléatoires) :</p>
-<div class="cell tag_remove-input tag_remove-output docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>  <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="nn">rd</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000000</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Distribution statistique&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Valeurs accessibles&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Fréquences&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;rice&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/exo_science_2_2_0.png" src="../_images/exo_science_2_2_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="etude-de-donnees-experimentales">
@@ -524,7 +549,62 @@ Valeur constructeur<div class="sd-summary-down docutils">
 <p class="sd-card-text">La valeur annoncée par le constructeur est <span class="math notranslate nohighlight">\(C = 0.1 \mu F\)</span> mais en l’absence d’étude plus complète sur les incertitudes de mesure, on ne peut décider si la valeur que vous avez estimée est cohérente. Vous trouverez ci-dessous les valeurs à trouver (cliquer sur la croix).</p>
 </div>
 </details></div>
-<div class="cell tag_remove-input tag_remove-output docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Les libraires ont déjà été importées à l&#39;exercice précédent&quot;&quot;&quot;</span>
+<span class="n">temps</span><span class="p">,</span> <span class="n">ucb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;Sf6/circuit_rc.dat&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Importation des données</span>
+
+<span class="k">def</span> <span class="nf">bin_to_volt</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;Fonction qui transforme une valeur 0-255 en valeur de tension.&quot;&quot;&quot;</span>
+	<span class="n">B_MAX</span> <span class="o">=</span> <span class="mi">1023</span>
+	<span class="n">U_MAX</span> <span class="o">=</span> <span class="mi">5</span>
+	<span class="n">B_MIN</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">U_MIN</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">tension</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span> <span class="o">-</span> <span class="n">B_MIN</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">B_MAX</span> <span class="o">-</span> <span class="n">B_MIN</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">U_MAX</span> <span class="o">-</span> <span class="n">U_MIN</span><span class="p">)</span> <span class="o">+</span> <span class="n">U_MIN</span>
+	<span class="k">return</span> <span class="n">tension</span>
+
+<span class="n">uc</span> <span class="o">=</span> <span class="n">bin_to_volt</span><span class="p">(</span><span class="n">ucb</span><span class="p">)</span>
+
+
+<span class="sd">&quot;&quot;&quot;Tracé de uc(t)&quot;&quot;&quot;</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Etude de la décharge d&#39;un RC&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t(microsecondes)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;uc(V)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temps</span><span class="p">,</span> <span class="n">uc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;uc(t)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="sd">&quot;&quot;&quot;Détermination de tau&quot;&quot;&quot;</span>
+<span class="n">U0</span> <span class="o">=</span> <span class="n">uc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Tension initiale</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">uc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.37</span> <span class="o">*</span> <span class="n">U0</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">uc</span><span class="p">):</span>  <span class="c1"># Test des 37%</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temps</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>  <span class="c1"># Temps juste avant d&#39;invalider la condition</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temps</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># Temps juste après invalidation</span>
+
+<span class="n">tau</span> <span class="o">=</span> <span class="p">(</span><span class="n">temps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">temps</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># On prend la moyenne des deux</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">1e5</span>  <span class="c1"># Valeur de R</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">tau</span> <span class="o">/</span> <span class="n">R</span> <span class="o">/</span> <span class="mf">1e6</span>  <span class="c1"># (tau était en microsecondes)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valeur estimée de tau :&quot;</span><span class="p">,</span> <span class="n">tau</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valeur estimée de C :&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tous les chiffres ne sont pas forcément significatifs...&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/exo_science_2_4_0.png" src="../_images/exo_science_2_4_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10700.0
+11000.0
+Valeur estimée de tau : 10850.0
+Valeur estimée de C : 1.085e-07
+Tous les chiffres ne sont pas forcément significatifs...
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="experiences-multiples">
@@ -543,7 +623,48 @@ Valeur constructeur<div class="sd-summary-down docutils">
 <li><p>Utiliser les fonctions de numpy pour estimer la valeur moyennes des mesures de <span class="math notranslate nohighlight">\(\tau\)</span> ainsi que l’écart-type des mesures. Utiliser la valeur moyenne de <span class="math notranslate nohighlight">\(\tau\)</span> pour obtenir une estimation de la capacitance <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
 </ol>
 </div>
-<div class="cell tag_remove-input tag_remove-output docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">taus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;Sf6/circuit_rc_auto.dat&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>  <span class="c1"># Importation des données</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nombre de mesures :&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">taus</span><span class="p">))</span>
+
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Etude de la décharge d&#39;un RC&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;tau(microsecondes)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Fréquence&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">taus</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="sd">&quot;&quot;&quot;Calcul de la moyenne et écart-type&quot;&quot;&quot;</span>
+<span class="n">tau_m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">taus</span><span class="p">)</span>
+<span class="n">tau_u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">taus</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tau moyen : &quot;</span><span class="p">,</span> <span class="n">tau_m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ecart-type : &quot;</span><span class="p">,</span> <span class="n">tau_u</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tous les chiffres ne sont pas forcément significatifs...&quot;</span><span class="p">)</span>
+
+<span class="n">R</span> <span class="o">=</span> <span class="mf">1e5</span>  <span class="c1"># Valeur de R</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">tau_m</span> <span class="o">/</span> <span class="n">R</span> <span class="o">/</span> <span class="mf">1e6</span>  <span class="c1"># (tau était en microsecondes)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valeur estimée de C :&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nombre de mesures : 1000
+</pre></div>
+</div>
+<img alt="../_images/exo_science_2_6_1.png" src="../_images/exo_science_2_6_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tau moyen :  9985.208
+Ecart-type :  27.001144379410995
+Tous les chiffres ne sont pas forcément significatifs...
+Valeur estimée de C : 9.985208000000001e-08
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="celerite-des-ultrasons">
@@ -579,11 +700,98 @@ Valeur constructeur<div class="sd-summary-down docutils">
 <li><p>L’option <code class="docutils literal notranslate"><span class="pre">label</span></code> ne prend comme argument qu’une chaine de caractère. Vous pouvez transformer un flottant ou un entier en chaine de caractère <code class="docutils literal notranslate"><span class="pre">x</span></code> par <code class="docutils literal notranslate"><span class="pre">str(x)</span></code>. Vous pouvez aussi concaténer cette chain avec d’autres : <code class="docutils literal notranslate"><span class="pre">str(x)</span> <span class="pre">+</span> <span class="pre">&quot;</span> <span class="pre">cm&quot;</span></code>.</p></li>
 </ul>
 </div>
-<div class="cell tag_remove-input tag_remove-output docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">donnees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;Sf6/vitesse_son_2.dat&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">distances</span> <span class="o">=</span> <span class="n">donnees</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Récupération des distances.</span>
+
+<span class="sd">&quot;&quot;&quot;Tracé des histogrammes&quot;&quot;&quot;</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Analyse des données expérimentales&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Temps de vol (microssec)&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">donnees</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Distance d&#39;étude</span>
+    <span class="n">tps</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># Les temps de vol</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">tps</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;rice&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;d = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; cm&quot;</span><span class="p">)</span>  <span class="c1"># Tracé de l&#39;histogramme. Observer l&#39;ajout de la légende.</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
 </div>
-<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
-<div class="cell tag_remove-input tag_remove-output docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/exo_science_2_8_0.png" src="../_images/exo_science_2_8_0.png" />
+</div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">selection</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fonction qui sélectionne les valeurs acceptables du vecteur u&quot;&quot;&quot;</span>
+    <span class="n">um</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>  <span class="c1"># Calcul de la moyenne</span>
+    <span class="n">uu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Calcul de l&#39;écart-type</span>
+
+    <span class="sd">&quot;&quot;&quot;Important : On ne connait pas quelle va être la taille de u_sel.</span>
+<span class="sd">    L&#39;usage d&#39;un vecteur numpy est donc déconseillé. On va créer une liste classique</span>
+<span class="sd">    qu&#39;on transformera à la fin en vecteur numpy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">u_sel</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Liste où l&#39;on va stocker les valeurs sélectionnées.</span>
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">u</span><span class="p">:</span>  <span class="c1"># On parcourt les valeurs de la liste.</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">val</span> <span class="o">-</span> <span class="n">um</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">uu</span><span class="p">:</span>  <span class="c1"># Test d&#39;écart à la valeur moyenne</span>
+            <span class="n">u_sel</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>  <span class="c1"># On ajoute la valeur</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">u_sel</span><span class="p">)</span>  <span class="c1"># On transforme u_sel en vecteur numpy</span>
+
+
+<span class="sd">&quot;&quot;&quot;Détermination des valeurs de c&quot;&quot;&quot;</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Liste pour les célérités</span>
+<span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">donnees</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Distance</span>
+    <span class="n">t_sel</span> <span class="o">=</span> <span class="n">selection</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>  <span class="c1"># Sélection des valeurs acceptables</span>
+    <span class="n">t_moy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">t_sel</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">d</span> <span class="o">/</span> <span class="n">t_moy</span>
+    <span class="n">cs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">cs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1000000</span>  <span class="c1"># On passe à des m/s</span>
+
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Valeurs de célérité estimée&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;d(cm)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;c(m/s)&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">cs</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Célérité&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>  <span class="c1"># On ne relie pas les points.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;On observe des valeurs entre 345m/s et 350m/s soit des valeurs peu dispersées.&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Pensez à commenter le précédent plt.show()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On observe des valeurs entre 345m/s et 350m/s soit des valeurs peu dispersées.
+</pre></div>
+</div>
+<img alt="../_images/exo_science_2_9_1.png" src="../_images/exo_science_2_9_1.png" />
+</div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">celerite</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valeur estimée de la célérité :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">celerite</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;m/s&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------
+Valeur estimée de la célérité :
+346.3315935386808m/s
+---------
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
